@@ -131,6 +131,28 @@
 	<!--  -- .lists -->
 	<!--  -- footer -->	
 
+	<!-- This is the "Offline page" service worker -->
+	<!-- Add this below content to your HTML page, or add the js file to your page at the very top to register service worker -->
+	<!-- Check compatibility for the browser we're running this in -->
+	<script>
+		if ("serviceWorker" in navigator) {
+			if (navigator.serviceWorker.controller) {
+				console.log("Active service worker found");
+			} else {
+				// Register the service worker
+				navigator.serviceWorker
+					.register("sw.js", {
+						scope: "./"
+					})
+					.then(function (reg) {
+						console.log("Service worker registered: ", reg.scope);
+					})
+					.catch(function(err) {
+						console.log("Service worker NOT registered: ", err);
+					});
+			}
+		}
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src='./index.js'></script>
 </body>
