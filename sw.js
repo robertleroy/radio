@@ -1,3 +1,4 @@
+
 const staticCacheName = "static-cache-v1";
 const dynamicCacheName = "dynamic-cache-v1";
 const assets = [
@@ -11,19 +12,18 @@ const assets = [
 
 ];
 
-// limit cache size //
+
 const limitCacheSize = (name, size) => {
 	caches.open(name).then(cache => {
 		cache.keys().then(keys => {
-			if (keys.length >size) {
+			if (keys.length > size) {
 				cache.delete(keys[0]).then(limitCacheSize(name,size));
 			}
 		})
 	})
-}
+};
 
 self.addEventListener("install", event => {
-	// console.log("install event");
 	event.waitUntil( 
 		caches.open(staticCacheName).then(cache => {
 			cache.addAll(assets);
@@ -33,7 +33,6 @@ self.addEventListener("install", event => {
 
 
 self.addEventListener("activate", event => {
-	// console.log("activate event");
 	event.waitUntil(
 		caches.keys().then( keys => {
 			return Promise.all( keys 
@@ -47,7 +46,6 @@ self.addEventListener("activate", event => {
 
 
 self.addEventListener("fetch", event => {
-	// console.log("fetch event");
 	event.respondWith(
 		caches.match(event.request).then(cacheRes => {
 			return cacheRes || fetch(event.request).then(fetchRes => {
@@ -57,10 +55,13 @@ self.addEventListener("fetch", event => {
 					return fetchRes;
 				})
 			});
-		// }).catch(() => {
-		// 	if (event.request.url.indexOf(".html") > -1 ) {
-		// 		return caches.match("/fallback.html");
-		// 	}
+		}).catch(() => {
+			if (event.request.url.indexOf(".html") > -1 ) {
+				return caches.match("/fallback.html");
+			}
 		})
 	);
 });
+
+
+
