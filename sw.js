@@ -1,4 +1,3 @@
-
 const staticCacheName = "static-cache-v2";
 const dynamicCacheName = "dynamic-cache-v2";
 const assets = [
@@ -9,7 +8,6 @@ const assets = [
 	'/favicon.ico',
 	'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2',
 	'/fallback.html'
-
 ];
 
 
