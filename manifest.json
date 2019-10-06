@@ -1,7 +1,7 @@
 {
   "name": "Vue Radio",
   "short_name": "VueRadio",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffa91e",
 	"theme_color": "#ffa91e",
