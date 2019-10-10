@@ -5,7 +5,7 @@
 
 const app = new Vue({
   el: "#app",
-  components: {},
+
   data: {
     title: "Audio Tests",
     menu: ["Radio", "Music"],
@@ -60,8 +60,8 @@ const app = new Vue({
       }
     ],
 
-    audioObj: null,
     selectedIndex: 0,
+    audioObj: null,
     volume: 1.0,
     progress: 0,
     duration: null,
@@ -70,6 +70,7 @@ const app = new Vue({
     mute: false,
     autoplay: true,
   },
+
   methods: {
     innerWidth() {
       return window.innerWidth;
@@ -136,6 +137,7 @@ const app = new Vue({
       this.selectedIndex = index;
       this.audioObj = new Audio(this.currentList[this.selectedIndex].url);
       this.audioObj.volume = this.volume;
+      this.audioObj.type = "audio/mpeg";
 
       this.togglePlay();
 
@@ -152,7 +154,6 @@ const app = new Vue({
       
       if (this.selectedIndex >= this.currentList.length) {
         this.selectedIndex = 0; 
-        // this.progress=0;        
       }
       this.loadSound(this.selectedIndex);
     },  
@@ -180,13 +181,9 @@ const app = new Vue({
         this.audioObj = null;
         this.playing = false;
         return;
-      }
-
-    
-        this.audioObj.pause();
-        this.audioObj.currentTime = 0;
-    
-      
+      }    
+      this.audioObj.pause();
+      this.audioObj.currentTime = 0;          
       this.playing = !this.audioObj.paused;
     },
 
@@ -204,7 +201,6 @@ const app = new Vue({
           this.selectedIndex = this.currentList.length;
         }        
         this.selectedIndex--;
-
         this.loadSound(this.selectedIndex);
       }
     },
@@ -220,6 +216,7 @@ const app = new Vue({
     updateVolume() { 
       this.audioObj.volume = this.volume;
     },
+
     toggleMute() {
       this.mute = !this.mute;
       if (this.mute) {
@@ -266,22 +263,24 @@ const app = new Vue({
       return(s-(s%=60))/60+(9<s?':':':0')+s ;
     },  // formatSeconds
   },
+
   mounted() {
     // this.currentList = this.songs;
     // this.title = "Music";
-    
+
     this.currentList = this.stations;
     this.title = "Radio";
   },
+
   watch: {    
     volume: function (val) {
       this.updateVolume();
     }  
   },
+
   beforeDestroy() {    
       this.audioObj.src = "";
       this.audioObj.load();
       this.audioObj = null;
   }
 });
-
