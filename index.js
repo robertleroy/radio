@@ -17,24 +17,24 @@ const app = new Vue({
         title: "Well All Right",
         description: "Traffic",
         url:
-          "./audio/Well%20All%20Right.mp3"
+          "https://raw.githubusercontent.com/robertleroy/radio/master/audio/Well%20All%20Right.mp3"
       },
       {
         title: "Watermelon Man",
         description: "Herbie Hancock",
-        url: "./audio/Watermelon%20man.mp3"
+        url: "https://robertleroy.github.io/radio/audio/Watermelon%20man.mp3"
       },
       {
         title: "Caravan",
         description: "Thelonious Monk",
         url:
-          "./audio/Caravan.mp3"
+          "https://raw.githubusercontent.com/robertleroy/radio/master/audio/Caravan.mp3"
       },
       {
         title: "Fried Neckbones",
         description: "Willie Bobo",
         url:
-          "./audio/Fried%20Neck%20Bones.mp3"
+          "https://raw.githubusercontent.com/robertleroy/radio/master/audio/Fried%20Neck%20Bones.mp3"
       }
     ],
     stations: [
@@ -62,7 +62,7 @@ const app = new Vue({
 
     audioObj: null,
     selectedIndex: 0,
-    volume: 0.5,
+    volume: 1.0,
     progress: 0,
     duration: null,
     currentTime: null,
@@ -158,10 +158,13 @@ const app = new Vue({
     },  
 
     play() {
-      this.audioObj.play();
-      this.playing = !this.audioObj.paused;
-
-      this.audioObj.ontimeupdate = this.updateProgress; 
+      try {
+        this.audioObj.play();
+        this.playing = !this.audioObj.paused;
+        this.audioObj.ontimeupdate = this.updateProgress; 
+      } catch {
+        this.title = "error ...";
+      }
     },
 
     pause() {
@@ -243,7 +246,9 @@ const app = new Vue({
       
       var rect = e.target.getBoundingClientRect();
       var x = e.clientX - rect.left;
-      var clickedValue = x * this.$refs.progress.max / this.$refs.progress.offsetWidth;      
+      // var clickedValue = x * this.$refs.progress.max / this.$refs.progress.offsetWidth;   
+      var clickedValue = x * 100 / this.$refs.progress.offsetWidth;    
+
 
       this.audioObj.currentTime = this.duration * (clickedValue/100);    
     },  // progressClick
@@ -262,9 +267,11 @@ const app = new Vue({
     },  // formatSeconds
   },
   mounted() {
-    // console.log(this.songs);
-    this.currentList = this.songs;
-    this.title = "Music";
+    // this.currentList = this.songs;
+    // this.title = "Music";
+    
+    this.currentList = this.stations;
+    this.title = "Radio";
   },
   watch: {    
     volume: function (val) {
@@ -277,3 +284,4 @@ const app = new Vue({
       this.audioObj = null;
   }
 });
+
