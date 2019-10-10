@@ -178,8 +178,8 @@ const app = new Vue({
 
       if ( this.currentList === this.stations ) {
         this.audioObj.src = "";
-        this.audioObj = null;
-        this.progress = 0;         
+        this.audioObj.currentTime = 0; 
+        this.audioObj = null;  
         this.playing = false;
         return;
       }    
