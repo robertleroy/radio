@@ -183,7 +183,8 @@ const app = new Vue({
         return;
       }    
       this.audioObj.pause();
-      this.audioObj.currentTime = 0;          
+      this.audioObj.currentTime = 0; 
+      this.progress = 0;                 
       this.playing = !this.audioObj.paused;
     },
 
