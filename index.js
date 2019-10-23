@@ -57,7 +57,12 @@ const app = new Vue({
         title: "KQED",
         description: "NPR",
         url: "http://kqed.ice.lbdns-streamguys.com/kqedradio"
-      }
+      },      
+      {
+        title: "C-Span",
+        description: "C-Span",
+        url: "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3"
+      },
     ],
 
     selectedIndex: 0,
