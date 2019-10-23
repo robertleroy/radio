@@ -10,6 +10,7 @@ const app = new Vue({
     title: "Audio Tests",
     menu: ["Radio", "Music"],
     currentList: [],
+    currentTitle: "",
     show: false,
     spinDirection: false,
     songs: [
@@ -140,6 +141,7 @@ const app = new Vue({
       }
 
       this.selectedIndex = index;
+      this.currentTitle = this.currentList[this.selectedIndex].title;
       this.audioObj = new Audio(this.currentList[this.selectedIndex].url);
       this.audioObj.volume = this.volume;
       this.audioObj.type = "audio/mpeg";
