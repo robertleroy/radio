@@ -18,13 +18,18 @@
 
 <div id="app">
 
-	<header v-swipe="swiped">
+	<header>
     <transition name="fade" mode="out-in">
       <h4 :key="title" @pointerdown="randomToggle">
         {{title}}
       </h4>
     </transition>
- 
+
+    <div class="swipe"  v-swipe="swiped">
+      w: {{innerWidth}}
+      h: {{innerHeight}}
+    </div>
+    
     <div class="icon btn spin" 
       @pointerdown="spin" ref="spin">
       more_vert
@@ -36,7 +41,7 @@
       <div class="list" :key="currentPanel">
         <div class="listItem" :key="index"
           v-for="(item,index) of currentList"
-          @pointerdown="loadAudio(index)"
+          @click="loadAudio(index)"
           :class="{ selectedItem: index === selectedIndex }">
           <div class="title">
             {{item.title}}
@@ -50,7 +55,7 @@
 
     <div class="icon btn loop" title="auto loop" 
       :class="{muted: !autoplay}"
-      @pointerdown="toggleAutoPlay">
+      @click="toggleAutoPlay">
       loop
     </div>
   </main>
@@ -101,7 +106,6 @@
   <audio ref="audio" @error="error($event)"></audio>
 
 </div> <!-- app -->
-
 
 
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
