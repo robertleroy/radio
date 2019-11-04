@@ -79,7 +79,7 @@
         
         <transition name="fade" mode="out-in">
           <div class="icon mute" 
-            @pointerdown="toggleMute" :key="muted">
+            @click="toggleMute" :key="muted">
             {{ muted ? 'volume_off' : 'volume_up' }}
           </div>
         </transition>
