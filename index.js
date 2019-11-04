@@ -3,168 +3,150 @@
 
 // import Vue from "vue";
 
-const Version = "0.0.1";
-const app = new Vue({
-  el: "#app",
+Vue.directive('swipe', {
+  bind: function (el, binding, vNode) {
+    let start={}, gesture={};  
+    
+    const gestureStart = function(e) {
+      start = {
+        pointerType: e.pointerType,
+        timeStamp: new Date().getTime(),
+        x: e.clientX,
+        y: e.clientY,
+      }   
+      el.setPointerCapture(e.pointerId);
+    }
+    
+    const gestureEnd = function(e) {
+      gesture = {
+        pointerType: e.pointerType,
+        duration: new Date().getTime() - start.timeStamp,
+        direction: e.clientX > start.x ? "right" : "left",
+        distance: {
+          x: Math.round(e.clientX - start.x),
+          y: Math.round(e.clientY - start.y)         
+        }
+      }  
+      // console.log(gesture);
+      if ( gesture.duration < 500 && 
+          Math.abs(gesture.distance.x) > 100 && 
+          Math.abs(gesture.distance.y) < 100 )  {
 
-  data: {
-    title: "Audio Tests",
-    menu: ["Radio", "Music"],
-    currentList: [],
-    currentTitle: "",
-    show: false,
+        if (binding.arg === gesture.direction || !binding.arg) {
+          binding.value(e, gesture);
+        }
+      }     
+      el.releasePointerCapture(e.pointerId);
+    }
+    
+    el.addEventListener('pointerdown', gestureStart); 
+    el.addEventListener('pointerup', gestureEnd);
+    el.addEventListener('pointercancel', gestureEnd);
+  }
+});  
+
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+
+
+const app = new Vue({ 
+  el: '#app',
+  store,
+  data: {    
     spinDirection: false,
-    songs: [
-      {
-        title: "Well All Right",
-        description: "Traffic",
-        url:
-          "https://raw.githubusercontent.com/robertleroy/radio/master/audio/Well%20All%20Right.mp3"
-      },
-      {
-        title: "Watermelon Man",
-        description: "Herbie Hancock",
-        url: "https://robertleroy.github.io/radio/audio/Watermelon%20man.mp3"
-      },
-      {
-        title: "Caravan",
-        description: "Thelonious Monk",
-        url:
-          "https://raw.githubusercontent.com/robertleroy/radio/master/audio/Caravan.mp3"
-      },
-      {
-        title: "Fried Neckbones",
-        description: "Willie Bobo",
-        url:
-          "https://raw.githubusercontent.com/robertleroy/radio/master/audio/Fried%20Neck%20Bones.mp3"
-      }
-    ],
-    stations: [
-      {
-        title: "MSNBC",
-        description: "News & Politics",
-        url: "http://198.178.123.5:12386/home.pls?sid=1"
-      },
-      {
-        title: "CNN",
-        description: "News & Politics",
-        url: "http://tunein.streamguys1.com/cnn"
-      },
-      {
-        title: "KGOU",
-        description: "NPR",
-        url: "http://20603.live.streamtheworld.com:80/KGOUFM_64_SC"
-      },
-      {
-        title: "KQED",
-        description: "NPR",
-        url: "http://kqed.ice.lbdns-streamguys.com/kqedradio"
-      },      
-      {
-        title: "C-SPAN",
-        description: "C-Span",
-        url: "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3"
-      },
-    ],
-
+    slide: "slideRight",   
+    muted: false,
     selectedIndex: 0,
-    audioObj: null,
-    volume: 1.0,
+    selectedItem: null,
+    playing: false, 
+    audioObj: null,  
+    audioEndFx: null,
     progress: 0,
     duration: null,
     currentTime: null,
-    playing: false,
-    mute: false,
-    autoplay: true,
+  },
+ 
+  computed: { 
+    ...mapGetters([
+      'currentList', 
+      'currentPanel',
+      'autoplay',
+    ]), 
+
+    volume: {
+      get() {
+        return this.$store.state.volume;
+      },
+      set(value) {
+        this.$store.commit('setVolume', value);
+      }
+    },
+
+    title() {
+      if ( this.playing && this.selectedItem )
+        return this.selectedItem.title;
+        else return this.currentPanel;
+    },
   },
 
   methods: {
-    innerWidth() {
-      return window.innerWidth;
+    ...mapMutations([
+      'updateCurrentPanel',
+      'updateAutoPlay',
+    ]),     
+    swiped(e, gesture) {
+      this.toggleSlide(gesture.direction === "right");
     },
-
-    showMenu() {
-      if (window.innerWidth < 800) {
-        this.show = !this.show;
-      } else {
-        this.show = true;
-      }
-      return this.show;
+    randomToggle() {
+      this.toggleSlide(Math.random() >= 0.5);
     },
-
-    toggleMenu() {
-      if (this.showMenu()) {
-        this.$refs.aside.style.transform = "translate(0)";
-        this.$refs.main.style.marginLeft = "100vw";
-      } else {
-        this.$refs.aside.style.transform = "translate(-100vw)";
-        this.$refs.main.style.marginLeft = "0";
-      }
+    toggleSlide(isTrue) {
+      isTrue ? 
+        this.slide = "slideRight" :
+        this.slide = "slideLeft"
+      this.toggleList();
     },
-
-    menuClick(item) {
-      this.title = item;
-      this.toggleMenu();
-      if (item === "Radio") {
-        this.currentList = this.stations;
-      } else if (item === "Music") {
-        this.currentList = this.songs;
-      } else {
-        this.currentList = [];
-      }
-    },
-
-    spin() {
-      this.spinDirection = !this.spinDirection;
-      if (this.spinDirection) {
-        this.$refs.spin.style.transform = "rotate(2880deg)";
-      } else {
-        this.$refs.spin.style.transform = "rotate(-2880deg)";
-      }
-    },
+    
+    toggleList() {
+      let panel = "";
+      this.currentPanel === "Radio" ?
+        panel = "Music" :
+        panel = "Radio";
+        
+      this.updateCurrentPanel(panel);  
+    }, 
 
     togglePlay() {
-      if (this.audioObj === null) {
-        this.loadSound(this.selectedIndex);
+      if (!this.selectedItem) {
+        this.loadAudio(this.selectedIndex);
         return;
-      } 
+      }    
+      
+      this.playing === false ?        
+        this.play() : 
+        this.pause(); 
+    },   
 
-      if (this.audioObj.paused) {
-        this.play();
-      } else {
-        this.pause();
-      }
-    },
+    loadAudio(index) {
+      // console.log(item);
+      this.stop();
 
-    loadSound(index) {
-      if (this.audioObj) {
-        this.stop();
-      }
+      this.selectedIndex = index;      
+      this.selectedItem = this.currentList[this.selectedIndex];
 
-      this.selectedIndex = index;
-      this.currentTitle = this.currentList[this.selectedIndex].title;
-      this.audioObj = new Audio(this.currentList[this.selectedIndex].url);
-      this.audioObj.volume = this.volume;
-      this.audioObj.type = "audio/mpeg";
+      this.audioObj.src = this.selectedItem.url; 
+      this.updateVolume();
 
       this.togglePlay();
-
-      this.audioObj.addEventListener('ended', this.loadNext);
     },
 
     loadNext() {
-
-      this.pause();
-      this.currentTime = 0;
-      if ( !this.autoplay ) { return; }
+      this.stop();  
+      let x = this.selectedIndex;
+      const cl = this.currentList.length;
       
-      this.selectedIndex++;
-      
-      if (this.selectedIndex >= this.currentList.length) {
-        this.selectedIndex = 0; 
-      }
-      this.loadSound(this.selectedIndex);
-    },  
+      this.selectedIndex = (x + 1) % cl;
+      this.loadAudio(this.selectedIndex);
+    },
 
     play() {
       try {
@@ -173,35 +155,26 @@ const app = new Vue({
         this.audioObj.ontimeupdate = this.updateProgress; 
       } catch {
         this.title = "error ...";
+        this.stop();   
       }
     },
-
+    
     pause() {
       this.audioObj.pause();
       this.playing = !this.audioObj.paused;
     },
     
     stop() {
-      if (this.audioObj === null) { return; } 
-
-      if ( this.currentList === this.stations ) {
-        this.audioObj.src = "";
-        this.audioObj.currentTime = 0; 
-        this.audioObj = null;  
-        this.playing = false;
-        return;
-      }    
-      
       this.audioObj.pause();
-      this.audioObj.currentTime = 0; 
+      this.audioObj.currentTime = 0;       
       this.playing = !this.audioObj.paused;
-    },
+    },    
 
     prev() {
-      if (this.audioObj === null) { 
-        this.loadSound(0);
+      if (!this.selectedItem) {
+        this.loadAudio(this.selectedIndex);
         return;
-      } 
+      }
 
       if (this.audioObj.currentTime > 10) {
         this.audioObj.currentTime = 0;
@@ -209,33 +182,29 @@ const app = new Vue({
 
         if ( this.selectedIndex <= 0 ) { 
           this.selectedIndex = this.currentList.length;
-        }        
+        } 
         this.selectedIndex--;
-        this.loadSound(this.selectedIndex);
+        this.loadAudio(this.selectedIndex);
       }
     },
 
-    next() {
-      if (this.audioObj === null) { 
-        this.loadSound(0);
+    next() {     
+      if (!this.selectedItem) {
+        this.loadAudio(this.selectedIndex);
       } else {
         this.loadNext();
       }
     },
 
-    updateVolume() { 
+    toggleMute() {
+      this.muted = !this.muted;
+      this.audioObj.muted = this.muted ;
+    },
+
+    updateVolume() {
       this.audioObj.volume = this.volume;
     },
-
-    toggleMute() {
-      this.mute = !this.mute;
-      if (this.mute) {
-        this.audioObj.muted = true;
-      } else {
-        this.audioObj.muted = false;
-      }
-    },
-
+  
     updateProgress() {
       if (this.audioObj === null) { return; } 
 
@@ -245,7 +214,7 @@ const app = new Vue({
       if (!this.audioObj || !this.audioObj.currentTime) return this.progress = 0;
       this.progress = (this.audioObj.currentTime / this.audioObj.duration) * 100;
     },    // updateProgress
-    
+
     progressClick(e) {         
       if (this.duration === Infinity || this.duration === null ) { 
         return; 
@@ -253,13 +222,10 @@ const app = new Vue({
       
       var rect = e.target.getBoundingClientRect();
       var x = e.clientX - rect.left;
-      // var clickedValue = x * this.$refs.progress.max / this.$refs.progress.offsetWidth;   
       var clickedValue = x * 100 / this.$refs.progress.offsetWidth;    
-
 
       this.audioObj.currentTime = this.duration * (clickedValue/100);    
     },  // progressClick
-
 
     formatSeconds(s) {      
       if (!s) return "...";
@@ -271,26 +237,72 @@ const app = new Vue({
       }
       s = Math.floor(s);
       return(s-(s%=60))/60+(9<s?':':':0')+s ;
-    },  // formatSeconds
-  },
+    }, 
+    
+    toggleAutoPlay() {
+      this.audioObj.removeEventListener('ended', this.audioEndFx);
+      // this.autoplay = !this.autoplay;   
+           
+      this.updateAutoPlay(!this.autoplay);  
+      this.setEndFx();
+    },  
 
-  mounted() {
-    // this.currentList = this.songs;
-    // this.title = "Music";
+    setEndFx() { 
+      this.autoplay ?
+        this.audioEndFx = this.loadNext : 
+        this.audioEndFx = this.stop;
+        
+      this.audioObj.addEventListener('ended', this.audioEndFx);
+    },
 
-    this.currentList = this.stations;
-    this.title = "Radio";
-  },
+    init() {
+      // this.$store.commit("updateSelectedItem", null);
+      this.selectedItem = null;
+      this.audioObj = this.$refs.audio;
+      this.audioObj.crossorigin = "anonymous";
+      this.audioObj.type = "audio/mpeg"; 
 
+      this.setEndFx();
+      
+    },
+    
+    spin() {      
+      this.spinDirection = !this.spinDirection;
+      this.spinDirection ? 
+        this.$refs.spin.style.transform = "rotate(2880deg)" :
+        this.$refs.spin.style.transform = "rotate(-2880deg)";
+    }, 
+
+    error(e) {
+      // console.log(e);
+      this.title = "error ...";
+      this.stop();
+    },
+  },  
+  
   watch: {    
     volume: function (val) {
       this.updateVolume();
-    }  
+    }
   },
 
-  beforeDestroy() {    
-      this.audioObj.src = "";
-      this.audioObj.load();
-      this.audioObj = null;
+  beforeCreate() {
+    this.$store.commit('initializeStore');
+    this.$store.subscribe((mutation, state) => {
+
+      let store = {
+        version: state.version,
+        volume: state.volume,
+        currentPanel: state.currentPanel,
+        autoplay: state.autoplay,
+      };
+      localStorage.setItem(
+        'store', JSON.stringify(store)
+      );
+    });
+  },
+
+  mounted() {
+    this.init();
   }
 });
