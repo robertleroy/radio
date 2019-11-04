@@ -20,18 +20,18 @@
 
 	<header v-swipe="swiped">
     <transition name="fade" mode="out-in">
-      <h4 :key="title" @pointerdown="randomToggle">
+      <h4 :key="title" @click="randomToggle">
         {{title}}
       </h4>
     </transition>
     
     <div class="icon btn spin" 
-      @pointerdown="spin" ref="spin">
+      @click="spin(), randomToggle()" ref="spin">
       more_vert
     </div>
 	</header>      
 
-  <main v-swipe="swiped"> 
+  <main> 
     <transition :name="slide" mode="out-in">
       <div class="list" :key="currentPanel">
         <div class="listItem" :key="index"
@@ -48,10 +48,12 @@
       </div>
     </transition>
 
-    <div class="icon btn loop" title="auto loop" 
-      :class="{muted: !autoplay}"
-      @click="toggleAutoPlay">
-      loop
+    <div class="swipe"  v-swipe="swiped">
+      <div class="icon btn loop" title="auto loop" 
+        :class="{muted: !autoplay}"
+        @click="toggleAutoPlay">
+        loop
+      </div>
     </div>
   </main>
 
