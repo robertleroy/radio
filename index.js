@@ -51,7 +51,7 @@ Vue.directive('swipe', {
 
 const Version = "0.0.1";
   
-default new Vuex.Store({
+const store = new Vuex.Store({
   state: { 
     version: '',
     songs: [
