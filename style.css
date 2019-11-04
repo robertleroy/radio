@@ -1,249 +1,289 @@
 
+
 body {
-  background: #121212;
+	background: #121212
 }
 
 .icon {
-  font-size: 4rem;
-  user-select: none;
+	font-size: 4rem;
+	user-select: none
 }
 
 h4,
 .play,
 .mute {
-  cursor: pointer;
-  &:hover {
-    color: rgba(#ffa91e, 0.8);
-  }
+	cursor: pointer
+}
+
+h4:hover,
+.play:hover,
+.mute:hover {
+	color: rgba(255, 169, 30, 0.8)
 }
 
 #app {
-  color: #ffa91e;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-gap: 1rem;
-  padding: 1rem;
-  max-width: 600px;
-  margin: auto;
+	color: #ffa91e;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-gap: 1rem;
+	padding: 1rem;
+	max-width: 600px;
+	margin: auto
 }
 
 header,
 main,
 footer {
-  background: #292929;
-  box-shadow: 0.5rem 0.5rem 0 rgba(black, 0.5);
+	background: #292929;
+	box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5)
 }
 
-// #region HEADER ======== //
 header {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: auto auto;
-  justify-content: space-between;
-  align-items: center;
-  grid-gap: 1rem;
-  padding: 1rem 0.5rem;
-  border-radius: 0.5rem 0.5rem 0 0;
-  h4 {
-    font-size: var(--h6);
-    user-select: none;
-  }
-  .spin {
-    font-size: 2rem;
-  }
-  @media (min-height: 400px) and (min-widrh: 330px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  @include media(330px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  @media (min-height: 400px) {
-    h4 {
-      font-size: var(--h4);
-    }
-    .spin {
-      font-size: 3rem;
-    }
-  }
-  @include media(500px) {
-    padding: 1rem 2rem;
-  }
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: auto auto;
+	justify-content: space-between;
+	align-items: center;
+	grid-gap: 1rem;
+	padding: 1rem 0.5rem;
+	border-radius: 0.5rem 0.5rem 0 0
 }
 
-// #endregion HEADER ======== //
-// #region MAIN ======== //
+header h4 {
+	font-size: var(--h6);
+	user-select: none
+}
+
+header .spin {
+	font-size: 2rem
+}
+
+@media (min-height: 400px) and (min-widrh: 330px) {
+	header {
+		padding-left: 1rem;
+		padding-right: 1rem
+	}
+}
+
+@media (min-width: 330px) {
+	header {
+		padding-left: 1rem;
+		padding-right: 1rem
+	}
+}
+
+@media (min-height: 400px) {
+	header h4 {
+		font-size: var(--h4)
+	}
+	header .spin {
+		font-size: 3rem
+	}
+}
+
+@media (min-width: 500px) {
+	header {
+		padding: 1rem 2rem
+	}
+}
+
 main {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  // align-items: start;
-  padding: 0.5rem;
-  overflow-x: hidden;
-  overflow-y: auto;
-  touch-action: pan-x pan-y;
-  @include media(330px) {
-    padding: 1rem;
-  }
-  @include media(500px) {
-    padding: 1rem 2rem;
-  }
-  .list {
-    position: relative;
-    display: grid;
-    .listItem {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: space-between;
-      align-items: center;
-      grid-gap: 1rem;
-      cursor: pointer;
-      padding: 0.2rem 1rem;
-    }
-    .listItem:hover,
-    .selectedItem {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    .listItem:active {
-      background: rgba(255, 255, 255, 0.3);
-    }
-  }
-  .swipe {
-    display: grid;
-    justify-content: end;
-    align-content: end;
-    padding: 1rem 0 0.5rem;
-  }
-  .icon.loop {
-    font-size: 2rem;
-  }
+	position: relative;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	padding: 0.5rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+	touch-action: pan-x pan-y
 }
 
-// #region MAIN ======== //
-// #region FOOTER ======== //
+@media (min-width: 330px) {
+	main {
+		padding: 1rem
+	}
+}
+
+@media (min-width: 500px) {
+	main {
+		padding: 1rem 2rem
+	}
+}
+
+main .list {
+	position: relative;
+	display: grid
+}
+
+main .list .listItem {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	grid-gap: 1rem;
+	cursor: pointer;
+	padding: 0.2rem 1rem
+}
+
+main .list .listItem:hover,
+main .list .selectedItem {
+	background: rgba(255, 255, 255, 0.2)
+}
+
+main .list .listItem:active {
+	background: rgba(255, 255, 255, 0.3)
+}
+
+main .swipe {
+	display: grid;
+	justify-content: end;
+	align-content: end;
+	padding: 1rem 0 0.5rem
+}
+
+main .icon.loop {
+	font-size: 2rem
+}
+
 footer {
-  display: grid;
-  grid-auto-flow: row;
-  padding: 0.5rem;
-  grid-gap: 0.5rem;
-  border-radius: 0 0 0.5rem 0.5rem;
-  @media (min-height: 400px) and (min-width: 330px) {
-    padding: 0.5 1rem;
-  }
-  @include media(500px) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  .buttons {
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-    grid-auto-flow: column;
-    grid-gap: 0 1rem;
-  }
-  .play {
-    font-size: 4rem;
-    @media (min-height: 400px) and (min-width: 330px) {
-      font-size: 6rem;
-    }
-  }
-  .btnGroup {
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-    grid-auto-flow: column;
-    .icon {
-      font-size: 4rem;
-    }
-  }
-  .volumeGroup {
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-    grid-auto-flow: column;
-    grid-gap: 1rem;
-    margin-right: 0.5rem;
-    input {
-      display: none;
-      @include media (500px) {
-        display: initial;
-      }
-    }
-    .mute {
-      font-size: 3rem;
-    }
-  }
-  .progressGroup {
-    position: relative;
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    grid-gap: 1rem;
-    .progress {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      height: 1rem;
-      cursor: pointer;
-      background: #121212;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.5);
-      .bar {
-        height: 1rem;
-        background: #ffa91e;
-      }
-    }
-  }
+	display: grid;
+	grid-auto-flow: row;
+	padding: 0.5rem;
+	grid-gap: 0.5rem;
+	border-radius: 0 0 0.5rem 0.5rem
 }
 
-// #endregion FOOTER ======== //
+@media (min-height: 400px) and (min-width: 330px) {
+	footer {
+		padding: 0.5 1rem
+	}
+}
+
+@media (min-width: 500px) {
+	footer {
+		padding-left: 2rem;
+		padding-right: 2rem
+	}
+}
+
+footer .buttons {
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-auto-flow: column;
+	grid-gap: 0 1rem
+}
+
+footer .play {
+	font-size: 4rem
+}
+
+@media (min-height: 400px) and (min-width: 330px) {
+	footer .play {
+		font-size: 6rem
+	}
+}
+
+footer .btnGroup {
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-auto-flow: column
+}
+
+footer .btnGroup .icon {
+	font-size: 4rem
+}
+
+footer .volumeGroup {
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-auto-flow: column;
+	grid-gap: 1rem;
+	margin-right: 0.5rem
+}
+
+footer .volumeGroup input {
+	display: none
+}
+
+@media (min-width: 500px) {
+	footer .volumeGroup input {
+		display: initial
+	}
+}
+
+footer .volumeGroup .mute {
+	font-size: 3rem
+}
+
+footer .progressGroup {
+	position: relative;
+	padding: 0 1rem;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	grid-gap: 1rem
+}
+
+footer .progressGroup .progress {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 1rem;
+	cursor: pointer;
+	background: #121212;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.5)
+}
+
+footer .progressGroup .progress .bar {
+	height: 1rem;
+	background: #ffa91e
+}
+
 .muted {
-  opacity: 0.3 !important;
+	opacity: 0.3 !important
 }
 
 .spin {
-  transition: 2s;
+	transition: 2s
 }
 
-// #region ANIMATION ================ //
 .slideRight-enter-active,
 .slideRight-leave-active {
-  transition: all 0.2s;
+	transition: all 0.2s
 }
 
 .slideRight-enter {
-  transform: translateX(-100vw);
+	transform: translateX(-100vw)
 }
 
 .slideRight-leave-to {
-  transform: translateX(100vw);
+	transform: translateX(100vw)
 }
 
 .slideLeft-enter-active,
 .slideLeft-leave-active {
-  transition: all 0.2s;
+	transition: all 0.2s
 }
 
 .slideLeft-enter {
-  transform: translateX(100vw);
+	transform: translateX(100vw)
 }
 
 .slideLeft-leave-to {
-  transform: translateX(-100vw);
+	transform: translateX(-100vw)
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.2s;
+	transition: all 0.2s
 }
 
 .fade-enter,
 .fade-leave-to {
-  opacity: 0;
+	opacity: 0
 }
-
-// #endregion ANIMATION ================ //
