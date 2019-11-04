@@ -8,6 +8,7 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	<meta http-equiv='X-UA-Compatible' content'ie=edge'>
 	<title>Vue Radio</title>
+	<link rel='stylesheet' href='./base.css'>
 	<link rel='stylesheet' href='./style.css'>
 
 
@@ -17,20 +18,20 @@
 
 <div id="app">
 
-	<header>
+	<header v-swipe="swiped">
     <transition name="fade" mode="out-in">
-      <h4 :key="title" @click="randomToggle">
+      <h4 :key="title" @pointerdown="randomToggle">
         {{title}}
       </h4>
     </transition>
  
     <div class="icon btn spin" 
-      @click="spin" ref="spin">
+      @pointerdown="spin" ref="spin">
       more_vert
     </div>
 	</header>      
 
-  <main v-swipe="swiped"> 
+  <main> 
     <transition :name="slide" mode="out-in">
       <div class="list" :key="currentPanel">
         <div class="listItem" :key="index"
@@ -44,14 +45,14 @@
             {{item.description}}
           </div>
         </div>
-
-        <div class="icon btn loop" title="auto loop" 
-          :class="{muted: !autoplay}"
-          @pointerdown="toggleAutoPlay">
-          loop
-        </div>
       </div>
     </transition>
+
+    <div class="icon btn loop" title="auto loop" 
+      :class="{muted: !autoplay}"
+      @pointerdown="toggleAutoPlay">
+      loop
+    </div>
   </main>
 
   <footer>
