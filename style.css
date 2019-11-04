@@ -46,7 +46,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	grid-gap: 1rem;
-	padding: 1rem 0.5rem;
+	padding: 1rem;
 	border-radius: 0.5rem 0.5rem 0 0
 }
 
@@ -59,19 +59,6 @@ header .spin {
 	font-size: 2rem
 }
 
-@media (min-height: 400px) and (min-widrh: 330px) {
-	header {
-		padding-left: 1rem;
-		padding-right: 1rem
-	}
-}
-
-@media (min-width: 330px) {
-	header {
-		padding-left: 1rem;
-		padding-right: 1rem
-	}
-}
 
 @media (min-height: 400px) {
 	header h4 {
