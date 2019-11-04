@@ -33,7 +33,7 @@ header{
     align-items:center;
     grid-gap:1rem;
     user-select:none;
-    touch-action:pan-x;
+/*     touch-action: pan-x; */
     padding:0.5rem;
     border-radius:0.5rem 0.5rem 0 0
 }
