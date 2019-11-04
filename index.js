@@ -176,11 +176,6 @@ const app = new Vue({
   },
  
   computed: { 
-    // ...mapGetters([
-    //   'currentList', 
-    //   'currentPanel',
-    //   'autoplay',
-    // ]), 
 
     currentList() {
       return this.$store.getters.currentList;
@@ -202,17 +197,13 @@ const app = new Vue({
     },
 
     title() {
-      if ( this.playing && this.selectedItem )
-        return this.selectedItem.title;
-        else return this.currentPanel;
+      return this.playing && this.selectedItem ?
+        this.selectedItem.title :
+        this.currentPanel;
     },
   },
 
   methods: {
-    // ...mapMutations([
-    //   'updateCurrentPanel',
-    //   'updateAutoPlay',
-    // ]),     
     updateCurrentPanel(str) {
       this.$store.commit("updateCurrentPanel", str);
     },    
@@ -432,4 +423,5 @@ const app = new Vue({
     this.init();
   }
 });
+
 
