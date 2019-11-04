@@ -1,236 +1,311 @@
+body {  
+  background: #121212;
+}
 
-body {
-     background:$background;
+.icon {
+  font-size: 4rem;  
+  user-select: none;
 }
- .icon {
-     font-size: 4rem;
-     user-select: none;
+
+h4, .play, .mute {
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(#ffa91e, 0.8);
+  }
+}  
+
+
+#app {
+  color: #ffa91e;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 1rem;
+
+  padding: 1rem;
+
+  max-width: 600px;
+  margin: auto;
 }
- h4, .play, .mute {
-     cursor: pointer;
-     &:hover {
-         color: rgba(#ffa91e, 0.8);
-    }
+
+header, main, footer {
+  background: #292929;
+  box-shadow: 
+  0.5rem 0.5rem 0 rgba(black, 0.5);
 }
- #app {
-     // background:#121212;
-     color: $orange;
-     height: 100vh;
-     display: grid;
-     grid-template-rows: auto 1fr auto;
-     grid-gap: 1rem;
-     padding: 1rem;
-     max-width: 600px;
-     margin: auto;
+
+.swipe {    
+    user-select: none;
+  }
+
+// #region HEADER ======== //
+header {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto 1fr auto;
+  // justify-content: space-between;
+  align-items: center;
+  grid-gap: 1rem;
+    
+  padding: 0.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  h4 {
+    font-size: var(--h6);
+  }
+  // .swipe {    
+  //   user-select: none;
+  // }
+  .spin {
+    font-size: 2rem;
+  }
+
+  @media (min-height: 400px) and (min-widrh: 330px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+  }
+
+  @include media(330px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-height: 400px) {  
+    h4 {
+      font-size: var(--h4);
+    }
+    .spin {
+      font-size: 4rem;
+    }
+  }
+
+  @include media(500px) {
+    padding: 1rem 2rem;
+  }  
+
 }
- header, main, footer {
-     background: $surface;
-     box-shadow: 0.5rem 0.5rem 0 rgba(black, 0.5);
+// #endregion HEADER ======== //
+
+
+
+
+// #region MAIN ======== //
+main {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: start;
+  padding: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @include media(330px) {
+    padding: 1rem;
+  }
+
+  @include media(500px) {
+    padding: 1rem 2rem;
+  }
+
+  .list {
+    position: relative;
+    display: grid;
+    // align-content: start;
+    // height: 100%;
+    // width: 100%;
+    
+
+    .listItem {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-between;
+      align-items: center;
+      grid-gap: 1rem;
+
+      cursor: pointer;
+      padding: 0.2rem 1rem;
+    }
+    
+    .listItem:hover, .selectedItem {
+      background: rgba(255,255,255,0.2);
+    }  
+
+    .listItem:active {
+      background: rgba(255,255,255,0.3);
+    }    
+  }
+
+.icon.loop {
+    justify-self: end ;
+    // align-self: end;
+    font-size: 2rem;
+  }
+
+
 }
- .swipe {
-     user-select: none;
+// #region MAIN ======== //
+
+
+
+
+
+// #region FOOTER ======== //
+footer {
+  display: grid;
+  grid-auto-flow: row;
+  
+  padding:  0.5rem;  
+  grid-gap: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+
+  @media (min-height: 400px) and (min-width: 330px) { 
+    grid-gap: 0.5rem;
+    padding: 0.5 1rem;
+  } 
+  @include media(500px) {    
+    // grid-gap: 1rem;
+    padding-left:  2rem;
+    padding-right:  2rem;
+  }
+
+  .buttons {
+    display: grid;
+    justify-content: space-between;
+    align-items: start;
+    grid-auto-flow: column;
+    grid-gap: 0 1rem;
+
+    @include media (500px) { 
+      align-items: center;
+    }
+  }
+
+
+  .play {
+    font-size: 4rem;
+
+    @media (min-height: 400px) and (min-width: 330px) { 
+      font-size: 6rem;
+    }
+  }
+
+  .btnGroup {      
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-auto-flow: column;
+
+    .icon {
+      font-size: 4rem;
+    }
+  }
+
+  .volumeGroup {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    margin-right: 0.5rem;
+
+    input {
+      display: none; 
+
+      @include media (500px) {      
+        display: initial;
+      }
+    }
+
+    .mute {
+      position: relative;
+      top: 0.5rem;
+      font-size: 3rem;
+      
+      @include media (500px) {      
+        position: initial;
+      }
+    }
+  }
+
+
+  .progressGroup {
+    position: relative;
+    padding: 0 1rem;
+
+    .progress {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      height: 1rem;
+      cursor: pointer;
+      background: #121212;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 
+      inset 4px 4px 0 rgba(0,0,0,0.5);
+
+      .bar {
+        height: 1rem;
+        background:  #ffa91e;
+      }
+    }
+    
+    .meta {
+      position: absolute;
+      top: -1.5rem;
+      right: 1.5rem;
+      display: none;
+
+      @media (min-height: 400px) and (min-width: 330px) { 
+        display: initial;
+        // background: black;
+      }
+    }
+  }
+
 }
- // #region HEADER ======== // header {
-     display: grid;
-     grid-auto-flow: column;
-     grid-template-columns: auto 1fr auto;
-     // justify-content: space-between;
-     align-items: center;
-     grid-gap: 1rem;
-     padding: 0.5rem;
-     border-radius: 0.5rem 0.5rem 0 0;
-     h4 {
-         font-size: var(--h6);
-    }
-     // .swipe {
-         // user-select: none;
-         // 
-    }
-     .spin {
-         font-size: 2rem;
-    }
-     @media (min-height: 400px) and (min-widrh: 330px) {
-         padding-left: 1rem;
-         padding-right: 1rem;
-    }
-     @include media(330px) {
-         padding-left: 1rem;
-         padding-right: 1rem;
-    }
-     @media (min-height: 400px) {
-         h4 {
-             font-size: var(--h4);
-        }
-         .spin {
-             font-size: 4rem;
-        }
-    }
-     @include media(500px) {
-         padding: 1rem 2rem;
-    }
+// #endregion FOOTER ======== //
+
+
+.muted {
+  opacity: 0.3 !important;
 }
- // #endregion HEADER ======== // // #region MAIN ======== // main {
-     position: relative;
-     display: grid;
-     grid-template-rows: 1fr auto;
-     align-items: start;
-     padding: 0.5rem;
-     overflow-x: hidden;
-     overflow-y: auto;
-     @include media(330px) {
-         padding: 1rem;
-    }
-     @include media(500px) {
-         padding: 1rem 2rem;
-    }
-     .list {
-         position: relative;
-         display: grid;
-         // align-content: start;
-         // height: 100%;
-         // width: 100%;
-         .listItem {
-             display: grid;
-             grid-auto-flow: column;
-             justify-content: space-between;
-             align-items: center;
-             grid-gap: 1rem;
-             cursor: pointer;
-             padding: 0.2rem 1rem;
-        }
-         .listItem:hover, .selectedItem {
-             background: rgba(255,255,255,0.2);
-        }
-         .listItem:active {
-             background: rgba(255,255,255,0.3);
-        }
-    }
-     .icon.loop {
-         justify-self: end ;
-         // align-self: end;
-         font-size: 2rem;
-    }
+
+.spin {
+  transition: 2s;
 }
- // #region MAIN ======== // // #region FOOTER ======== // footer {
-     display: grid;
-     grid-auto-flow: row;
-     padding: 0.5rem;
-     grid-gap: 0;
-     border-radius: 0 0 0.5rem 0.5rem;
-     @media (min-height: 400px) and (min-width: 330px) {
-         grid-gap: 0.5rem;
-         padding: 0.5 1rem;
-    }
-     @include media(500px) {
-         // grid-gap: 1rem;
-         padding-left: 2rem;
-         padding-right: 2rem;
-    }
-     .buttons {
-         display: grid;
-         justify-content: space-between;
-         align-items: start;
-         grid-auto-flow: column;
-         grid-gap: 0 1rem;
-         @include media (500px) {
-             align-items: center;
-        }
-    }
-     .play {
-         font-size: 4rem;
-         @media (min-height: 400px) and (min-width: 330px) {
-             font-size: 6rem;
-        }
-    }
-     .btnGroup {
-         display: grid;
-         justify-content: space-between;
-         align-items: center;
-         grid-auto-flow: column;
-         .icon {
-             font-size: 4rem;
-        }
-    }
-     .volumeGroup {
-         display: grid;
-         justify-content: space-between;
-         align-items: center;
-         grid-auto-flow: column;
-         grid-gap: 1rem;
-         margin-right: 0.5rem;
-         input {
-             display: none;
-             @include media (500px) {
-                 display: initial;
-            }
-        }
-         .mute {
-             position: relative;
-             top: 0.5rem;
-             font-size: 3rem;
-             @include media (500px) {
-                 position: initial;
-            }
-        }
-    }
-     .progressGroup {
-         position: relative;
-         padding: 0 1rem;
-         .progress {
-             position: relative;
-             display: inline-block;
-             width: 100%;
-             height: 1rem;
-             cursor: pointer;
-             background: $background;
-             border-radius: 0.5rem;
-             overflow: hidden;
-             box-shadow: inset 4px 4px 0 rgba(0,0,0,0.5);
-             .bar {
-                 height: 1rem;
-                 background: $orange;
-            }
-        }
-         .meta {
-             position: absolute;
-             top: -1.5rem;
-             right: 1.5rem;
-             display: none;
-             @media (min-height: 400px) and (min-width: 330px) {
-                 display: initial;
-                 // background: black;
-            }
-        }
-    }
+
+
+// #region ANIMATION ================ //
+.slideRight-enter-active, .slideRight-leave-active {
+  transition: all 0.2s ;
 }
- // #endregion FOOTER ======== // .muted {
-     opacity: 0.3 !important;
+
+.slideRight-enter {
+  transform: translateX(-100vw);
 }
- .spin {
-     transition: 2s;
+.slideRight-leave-to {
+  transform: translateX(100vw);
 }
- // #region ANIMATION ================ // .slideRight-enter-active, .slideRight-leave-active {
-     transition: all 0.2s ;
+
+.slideLeft-enter-active, .slideLeft-leave-active {
+  transition: all 0.2s ;
 }
- .slideRight-enter {
-     transform: translateX(-100vw);
+
+.slideLeft-enter {
+  transform: translateX(100vw);
 }
- .slideRight-leave-to {
-     transform: translateX(100vw);
+.slideLeft-leave-to {
+  transform: translateX(-100vw);
 }
- .slideLeft-enter-active, .slideLeft-leave-active {
-     transition: all 0.2s ;
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.2s ;
 }
- .slideLeft-enter {
-     transform: translateX(100vw);
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
- .slideLeft-leave-to {
-     transform: translateX(-100vw);
-}
- .fade-enter-active, .fade-leave-active {
-     transition: all 0.2s ;
-}
- .fade-enter, .fade-leave-to {
-     opacity: 0;
-}
- // #region ANIMATION ================ //
+// #endregion ANIMATION ================ //
