@@ -1,52 +1,22 @@
 // index.js //
 // import "./style.scss";
 
-// import Vue from "vue";
+// import Vue from 'vue'
+// import Vuex from 'vuex'
+// import Hammer from 'hammerjs';
 
-Vue.directive('swipe', {
-  bind: function (el, binding, vNode) {
-    let start={}, gesture={};  
-    
-    const gestureStart = function(e) {
-      start = {
-        pointerType: e.pointerType,
-        timeStamp: new Date().getTime(),
-        x: e.clientX,
-        y: e.clientY,
-      }   
-      el.setPointerCapture(e.pointerId);
-    }
-    
-    const gestureEnd = function(e) {
-      gesture = {
-        pointerType: e.pointerType,
-        duration: new Date().getTime() - start.timeStamp,
-        direction: e.clientX > start.x ? "right" : "left",
-        distance: {
-          x: Math.round(e.clientX - start.x),
-          y: Math.round(e.clientY - start.y)         
-        }
-      }  
-      // console.log(gesture);
-      if ( gesture.duration < 500 && 
-          Math.abs(gesture.distance.x) > 100 && 
-          Math.abs(gesture.distance.y) < 100 )  {
+// Vue.use(Vuex)
 
-        if (binding.arg === gesture.direction || !binding.arg) {
-          binding.value(e, gesture);
-        }
-      }     
-      el.releasePointerCapture(e.pointerId);
+Vue.directive("swipe", {    
+  bind: function(el, binding) {
+    if (typeof binding.value === "function") { 
+      const mc = new Hammer(el); 
+      mc.get("swipe").set({ direction: Hammer.DIRECTION_ALL });
+      mc.on("swipe", binding.value);
+      /* 2=left 4=right */
     }
-    
-    el.addEventListener('pointerdown', gestureStart); 
-    el.addEventListener('pointerup', gestureEnd);
-    el.addEventListener('pointercancel', gestureEnd);
   }
-});
-
-
-
+}); 
 
 
 const Version = "0.0.1";
@@ -210,8 +180,13 @@ const app = new Vue({
     updateAutoPlay(bool) {
       this.$store.commit("updateAutoPlay", bool);
     },
-    swiped(e, gesture) {
-      this.toggleSlide(gesture.direction === "right");
+    swiped(e) {
+      /* e.offsetDirection
+        #2=left #4=right */        
+      const dir = e.offsetDirection;
+      if ( dir == 2 || dir == 4 ) {
+        this.toggleSlide(e.offsetDirection === 4);
+      }    
     },
     randomToggle() {
       this.toggleSlide(Math.random() >= 0.5);
