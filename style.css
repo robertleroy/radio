@@ -1,310 +1,305 @@
-
 body {
-  background: #121212
+	background: #121212
 }
 
 .icon {
-  font-size: 4rem;
-  user-select: none
+	font-size: 4rem;
+	user-select: none
 }
 
 h4,
 .play,
 .mute {
-  cursor: pointer
+	cursor: pointer
 }
 
 h4:hover,
 .play:hover,
 .mute:hover {
-  color: rgba(255, 169, 30, 0.8)
+	color: rgba(255, 169, 30, 0.8)
 }
 
 #app {
-  color: #ffa91e;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-gap: 1rem;
-  padding: 1rem;
-  max-width: 600px;
-  margin: auto
+	color: #ffa91e;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-gap: 1rem;
+	padding: 1rem;
+	max-width: 600px;
+	margin: auto
 }
 
 header,
 main,
 footer {
-  background: #292929;
-  box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5)
-}
-
-.swipe {
-  user-select: none
+	background: #292929;
+	box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5)
 }
 
 header {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  grid-gap: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.5rem 0.5rem 0 0;
-  user-select: none
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: auto auto;
+	justify-content: space-between;
+	align-items: center;
+	grid-gap: 1rem;
+	padding: 0.5rem;
+	border-radius: 0.5rem 0.5rem 0 0
 }
 
 header h4 {
-  font-size: var(--h6)
+	font-size: var(--h6);
+	user-select: none
 }
 
 header .spin {
-  font-size: 2rem
+	font-size: 2rem
 }
 
 @media (min-height: 400px) and (min-widrh: 330px) {
-  header {
-    padding-left: 1rem;
-    padding-right: 1rem
-  }
+	header {
+		padding-left: 1rem;
+		padding-right: 1rem
+	}
 }
 
 @media (min-width: 330px) {
-  header {
-    padding-left: 1rem;
-    padding-right: 1rem
-  }
+	header {
+		padding-left: 1rem;
+		padding-right: 1rem
+	}
 }
 
 @media (min-height: 400px) {
-  header h4 {
-    font-size: var(--h4)
-  }
-  header .spin {
-    font-size: 4rem
-  }
+	header h4 {
+		font-size: var(--h4)
+	}
+	header .spin {
+		font-size: 4rem
+	}
 }
 
 @media (min-width: 500px) {
-  header {
-    padding: 1rem 2rem
-  }
+	header {
+		padding: 1rem 2rem
+	}
 }
 
 main {
-  position: relative;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  align-items: start;
-  padding: 0.5rem;
-  overflow-x: hidden;
-  overflow-y: auto
+	position: relative;
+	display: grid;
+	grid-template-rows: 1fr auto;
+	align-items: start;
+	padding: 0.5rem;
+	overflow-x: hidden;
+	overflow-y: auto
 }
 
 @media (min-width: 330px) {
-  main {
-    padding: 1rem
-  }
+	main {
+		padding: 1rem
+	}
 }
 
 @media (min-width: 500px) {
-  main {
-    padding: 1rem 2rem
-  }
+	main {
+		padding: 1rem 2rem
+	}
 }
 
 main .list {
-  position: relative;
-  display: grid
+	position: relative;
+	display: grid
 }
 
 main .list .listItem {
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: space-between;
-  align-items: center;
-  grid-gap: 1rem;
-  cursor: pointer;
-  padding: 0.2rem 1rem
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	grid-gap: 1rem;
+	cursor: pointer;
+	padding: 0.2rem 1rem
 }
 
 main .list .listItem:hover,
 main .list .selectedItem {
-  background: rgba(255, 255, 255, 0.2)
+	background: rgba(255, 255, 255, 0.2)
 }
 
 main .list .listItem:active {
-  background: rgba(255, 255, 255, 0.3)
+	background: rgba(255, 255, 255, 0.3)
 }
 
 main .icon.loop {
-  justify-self: end;
-  font-size: 2rem
+	justify-self: end;
+	font-size: 2rem
 }
 
 footer {
-  display: grid;
-  grid-auto-flow: row;
-  padding: 0.5rem;
-  grid-gap: 0;
-  border-radius: 0 0 0.5rem 0.5rem
+	display: grid;
+	grid-auto-flow: row;
+	padding: 0.5rem;
+	grid-gap: 0;
+	border-radius: 0 0 0.5rem 0.5rem
 }
 
 @media (min-height: 400px) and (min-width: 330px) {
-  footer {
-    grid-gap: 0.5rem;
-    padding: 0.5 1rem
-  }
+	footer {
+		grid-gap: 0.5rem;
+		padding: 0.5 1rem
+	}
 }
 
 @media (min-width: 500px) {
-  footer {
-    padding-left: 2rem;
-    padding-right: 2rem
-  }
+	footer {
+		padding-left: 2rem;
+		padding-right: 2rem
+	}
 }
 
 footer .buttons {
-  display: grid;
-  justify-content: space-between;
-  align-items: start;
-  grid-auto-flow: column;
-  grid-gap: 0 1rem
+	display: grid;
+	justify-content: space-between;
+	align-items: start;
+	grid-auto-flow: column;
+	grid-gap: 0 1rem
 }
 
 @media (min-width: 500px) {
-  footer .buttons {
-    align-items: center
-  }
+	footer .buttons {
+		align-items: center
+	}
 }
 
 footer .play {
-  font-size: 4rem
+	font-size: 4rem
 }
 
 @media (min-height: 400px) and (min-width: 330px) {
-  footer .play {
-    font-size: 6rem
-  }
+	footer .play {
+		font-size: 6rem
+	}
 }
 
 footer .btnGroup {
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  grid-auto-flow: column
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-auto-flow: column
 }
 
 footer .btnGroup .icon {
-  font-size: 4rem
+	font-size: 4rem
 }
 
 footer .volumeGroup {
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  grid-auto-flow: column;
-  grid-gap: 1rem;
-  margin-right: 0.5rem
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-auto-flow: column;
+	grid-gap: 1rem;
+	margin-right: 0.5rem
 }
 
 footer .volumeGroup input {
-  display: none
+	display: none
 }
 
 @media (min-width: 500px) {
-  footer .volumeGroup input {
-    display: initial
-  }
+	footer .volumeGroup input {
+		display: initial
+	}
 }
 
 footer .volumeGroup .mute {
-  position: relative;
-  top: 0.5rem;
-  font-size: 3rem
+	position: relative;
+	top: 0.5rem;
+	font-size: 3rem
 }
 
 @media (min-width: 500px) {
-  footer .volumeGroup .mute {
-    position: initial
-  }
+	footer .volumeGroup .mute {
+		position: initial
+	}
 }
 
 footer .progressGroup {
-  position: relative;
-  padding: 0 1rem
+	position: relative;
+	padding: 0 1rem
 }
 
 footer .progressGroup .progress {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 1rem;
-  cursor: pointer;
-  background: #121212;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.5)
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 1rem;
+	cursor: pointer;
+	background: #121212;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.5)
 }
 
 footer .progressGroup .progress .bar {
-  height: 1rem;
-  background: #ffa91e
+	height: 1rem;
+	background: #ffa91e
 }
 
 footer .progressGroup .meta {
-  position: absolute;
-  top: -1.5rem;
-  right: 1.5rem;
-  display: none
+	position: absolute;
+	top: -1.5rem;
+	right: 1.5rem;
+	display: none
 }
 
 @media (min-height: 400px) and (min-width: 330px) {
-  footer .progressGroup .meta {
-    display: initial
-  }
+	footer .progressGroup .meta {
+		display: initial
+	}
 }
 
 .muted {
-  opacity: 0.3 !important
+	opacity: 0.3 !important
 }
 
 .spin {
-  transition: 2s
+	transition: 2s
 }
 
 .slideRight-enter-active,
 .slideRight-leave-active {
-  transition: all 0.2s
+	transition: all 0.2s
 }
 
 .slideRight-enter {
-  transform: translateX(-100vw)
+	transform: translateX(-100vw)
 }
 
 .slideRight-leave-to {
-  transform: translateX(100vw)
+	transform: translateX(100vw)
 }
 
 .slideLeft-enter-active,
 .slideLeft-leave-active {
-  transition: all 0.2s
+	transition: all 0.2s
 }
 
 .slideLeft-enter {
-  transform: translateX(100vw)
+	transform: translateX(100vw)
 }
 
 .slideLeft-leave-to {
-  transform: translateX(-100vw)
+	transform: translateX(-100vw)
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.2s
+	transition: all 0.2s
 }
 
 .fade-enter,
 .fade-leave-to {
-  opacity: 0
+	opacity: 0
 }
-
