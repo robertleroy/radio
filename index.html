@@ -2,34 +2,33 @@
 <html lang='en'>
 <head>
 	<meta charset='UTF-8'>
-  <meta name="author" content="Rob">
 	<meta name="description" content="Vuejs HTML5 Audio Test">
-  <meta name="keywords" content="Vuejs HTML5 Audio">
+	<meta name="keywords" content="Vuejs HTML5 Audio">
 	<meta name='viewport' content='width=device-width, initial-scale=1.0', user-scalable=no>
 	<meta http-equiv='X-UA-Compatible' content'ie=edge'>
+
 	<title>Vue Radio</title>
+
 	<link rel='stylesheet' href='./base.css'>
 	<link rel='stylesheet' href='./style.css'>
-
-
 </head>
 
 <body>
 
 <div id="app">
-	
-	<header>
+
+  <header>
     <transition name="fade" mode="out-in">
       <h4 :key="title" @click="randomToggle">
         {{title}}
       </h4>
     </transition>
-    
+
     <div class="icon btn spin" 
       @click="spin(), randomToggle()" ref="spin">
       more_vert
     </div>
-	</header>      
+  </header>      
 
   <main> 
     <transition :name="slide" mode="out-in">
@@ -88,14 +87,13 @@
     </div>
 
     <div class="progressGroup">
-      <small class="meta">
-          {{formatSeconds(currentTime)}} / {{formatSeconds(duration)}}
-      </small>
-
       <div class="progress btn" ref="progress" @click="progressClick($event)">
-
         <div class="bar" :style="{width: progress + '%'}"></div>
       </div>
+      
+      <small class="meta two">
+        {{formatSeconds(currentTime)}} / {{formatSeconds(duration)}}
+      </small>
     </div> 
 
   </footer>
