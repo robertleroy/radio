@@ -15,100 +15,96 @@
 
 <body>
 
-<div id="app" ref="app">
+<div id="app">
 
-	<aside ref="aside">
-		<div class="menu">
-			<div class="icon btn closeMenu" @click="toggleMenu">
-				close
-			</div>
-
-			<div class="menuItem btn" v-for="(item,index) of menu" :key="index"
-				:class="{ selectedMenu: item === title }" @click="menuClick(item)">
-				{{item}}
-			</div>
-
-		</div>
-	</aside>
-
+	<header>
+    <transition name="fade" mode="out-in">
+      <h4 :key="title" @click="randomToggle">
+        {{title}}
+      </h4>
+    </transition>
  
-	<main ref="main">
-		<header class="header">
-			<div class="btn hamburger" @click="toggleMenu">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
+    <div class="icon btn spin" 
+      @click="spin" ref="spin">
+      more_vert
+    </div>
+	</header>      
 
-			<h4>{{playing ? currentTitle : title}}</h4>
+  <main v-swipe="swiped"> 
+    <transition :name="slide" mode="out-in">
+      <div class="list" :key="currentPanel">
+        <div class="listItem" :key="index"
+          v-for="(item,index) of currentList"
+          @pointerdown="loadAudio(index)"
+          :class="{ selectedItem: index === selectedIndex }">
+          <div class="title">
+            {{item.title}}
+          </div>
+          <div class="description">
+            {{item.description}}
+          </div>
+        </div>
 
-			<div class="icon btn" ref="spin" @click="spin">more_vert</div>
-		</header>
+        <div class="icon btn loop" title="auto loop" 
+          :class="{muted: !autoplay}"
+          @pointerdown="toggleAutoPlay">
+          loop
+        </div>
+      </div>
+    </transition>
+  </main>
 
-		<section class="lists">
+  <footer>
+    <div class="buttons">
+      
+      <transition name="fade" mode="out-in">
+        <div class="icon play" 
+          @click="togglePlay" :key="playing">
+          {{ playing ? 'pause_circle_outline' : 'play_circle_outline' }}
+        </div>
+      </transition>
+      
+      <div class="btnGroup">
+        <div class="icon btn prev" @click="prev">skip_previous</div>
+        <div class="icon btn stop" @click="stop">stop</div>
+        <div class="icon btn next" @click="next">skip_next</div>
+      </div>
 
-			<div class="no-list" v-if="!currentList.length">
-				No list selected
-			</div>
+      <div class="volumeGroup">
+        <input type="range"
+            min='0' max='1' step="0.05"
+            v-model="volume">
+        
+        <transition name="fade" mode="out-in">
+          <div class="icon mute" 
+            @pointerdown="toggleMute" :key="muted">
+            {{ muted ? 'volume_off' : 'volume_up' }}
+          </div>
+        </transition>
+      </div>
+    </div>
 
-			<div class="list" v-else>
-				<div class="listItem" :key="index" :class="{ selectedItem: index === selectedIndex }"
-					v-for="(item,index) of currentList" @click="loadSound(index)">
-					<div class="title">{{item.title}}</div>
-					<div class="description">{{item.description}}</div>
-				</div>
-			</div>
+    <div class="progressGroup">
+      <small class="meta">
+          {{formatSeconds(currentTime)}} / {{formatSeconds(duration)}}
+      </small>
 
-			<div class="icon btn autoplay" :class="{ muted : !autoplay }" @click="autoplay = !autoplay"
-				title="autoplay">
-				autorenew
-			</div>
+      <div class="progress btn" ref="progress" @click="progressClick($event)">
 
-		</section>
+        <div class="bar" :style="{width: progress + '%'}"></div>
+      </div>
+    </div> 
 
+  </footer>
 
-		<footer class="footer">
+  <audio ref="audio" @error="error($event)"></audio>
 
-			<div class="buttons">
-				<span class="icon btn play"
-            ref="play"
-            @click="togglePlay()">
-            {{playing ? 'pause_circle_outline' : 'play_circle_outline'}}
-        </span>
-
-				<div class="btnGroup">
-					<div class="icon btn prev" @click="prev">skip_previous</div>
-					<div class="icon btn stop" @click="stop">stop</div>
-					<div class="icon btn next" @click="next">skip_next</div>
-				</div>
-
-				<div class="volumeGroup">
-					<input type="range" btn
-							min='0' max='1' step="0.02"
-							v-model="volume">
-					<div class="icon btn mute" @click="toggleMute">
-						{{ mute ? 'volume_off' : 'volume_up' }}
-					</div>
-				</div>
-			</div>
-
-			<div class="progressGroup" btn>
-				<small class="meta">
-						{{formatSeconds(currentTime)}} / {{formatSeconds(duration)}} 
-					</small>
-
-				<div class="progress" ref="progress" @click="progressClick($event)">
-					<div class="bar" :style="{width: progress + '%'}"></div>
-				</div>
-			</div>
-
-		</footer>
-	</main>
-</div>
+</div> <!-- app -->
 
 
 
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js"></script>
 	<script src='./index.js'></script>
 </body>
 </html>
