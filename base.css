@@ -19,6 +19,7 @@
 /*! largly based on normalize.css | github.com/necolas/normalize.css */
 html{
     font-family:sans-serif;
+    font-display: swap;
     -ms-text-size-adjust:100%;
     -webkit-text-size-adjust:100%;
     box-sizing:border-box;
@@ -507,6 +508,7 @@ dl dd+dt,dl li ul,dl li ol{
 .material-icons-outlined,.icon-outlined,.icon.outlined,[icon-outlined],.material-icons,.icon,[icon]{
     font-weight:normal;
     font-style:normal;
+    font-display: block;
     font-size:24px;
     line-height:1;
     letter-spacing:normal;
