@@ -10,8 +10,8 @@
 	"description" : "Vuejs HTML5 Audio Test",
 	"orientation" : "any",
 	"background_color" : "transparent",
-	"related_applications" : "",
-	"prefer_related_applications" : "false",
+	"related_applications" : "[]",
+	"prefer_related_applications" : false,
 	"icons" : [
 		{
 			"src": "./images/icon-24.png",
@@ -56,7 +56,7 @@
 		{
 			"src": "./images/icon-512.png",
 			"sizes": "512x512"
-		}
+		},
   ],
 	"screenshots" : [],
 	"generated" : "true"
