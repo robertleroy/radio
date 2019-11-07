@@ -6,10 +6,10 @@
 	"display" : "standalone",
 	"start_url" : "https://robertleroy.github.io/radio/",
 	"short_name" : "Vue Radio",
-	"theme_color" : "transparent",
+	"theme_color" : "#292929",
+	"background_color": "#292929",
 	"description" : "Vuejs HTML5 Audio Test",
 	"orientation" : "any",
-	"background_color" : "transparent",
 	"related_applications" : [],
 	"prefer_related_applications" : false,
 	"icons" : [
