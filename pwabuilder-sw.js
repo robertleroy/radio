@@ -24,16 +24,20 @@ self.addEventListener("install", function (event) {
 
 // If any fetch fails, it will show the offline page.
 self.addEventListener("fetch", function (event) {
-  console.log("fetch");
-  const destination = event.request.destination;  
-  switch (destination) {
-    case 'audio': {
-      event.respondWith(
-        /* "Network Falling Back to Cache" strategy */);
-      console.log('audio');
-      return;
-    }
-  }
+  // console.log("fetch");
+  // const destination = event.request.destination;  
+  // switch (destination) {
+  //   case 'audio': {
+  //     event.respondWith(
+  //       /* "Network Falling Back to Cache" strategy */);
+  //     console.log('audio');
+  //     return;
+  //   }
+  // }
+
+  if (event.request.destination === "audio") {
+    console.log('audio');
+  };
       
 
   
