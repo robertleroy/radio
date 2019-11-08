@@ -28,9 +28,9 @@ self.addEventListener("fetch", function (event) {
   const destination = event.request.destination;  
   switch (destination) {
     case 'audio': {
-      event.respondWith({
-        console.log('audio');
-          /* "Network Falling Back to Cache" strategy */});
+      event.respondWith(
+        /* "Network Falling Back to Cache" strategy */);
+      console.log('audio');
       return;
     }
       
