@@ -50,22 +50,22 @@ const store = new Vuex.Store({
       { // http://wrau.streamguys1.com/msnbc-free
         title: "MSNBC",
         description: "News & Politics",
-        url: "http://198.178.123.5:12386/home.pls?sid=1"
+        url: "https://crossorigin.me/http://198.178.123.5:12386/home.pls?sid=1"
       },
       {
         title: "CNN",
         description: "News & Politics",
-        url: "http://tunein.streamguys1.com/cnn"
+        url: "https://crossorigin.me/http://tunein.streamguys1.com/cnn"
       },
       {
         title: "KGOU",
         description: "NPR",
-        url: "http://20603.live.streamtheworld.com:80/KGOUFM_64_SC"
+        url: "https://crossorigin.me/http://20603.live.streamtheworld.com:80/KGOUFM_64_SC"
       },
       {
         title: "KQED",
         description: "NPR",
-        url: "http://kqed.ice.lbdns-streamguys.com/kqedradio"
+        url: "https://crossorigin.me/http://kqed.ice.lbdns-streamguys.com/kqedradio"
       },      
       {
         title: "C-SPAN",
