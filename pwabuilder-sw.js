@@ -39,11 +39,11 @@ self.addEventListener("fetch", function (event) {
     console.log('audio');
     return;
   };
-      
 
   
   
   if (event.request.method !== "GET") return;
+  console.log('!GET');
 
   event.respondWith(
     fetch(event.request).catch(function (error) {
