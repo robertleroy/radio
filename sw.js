@@ -1,4 +1,4 @@
-// This is the "Offline page" service worker
+// Radio service worker
 
 const CACHE = "radio-cache";
 const offlinePage = "offline.html";
