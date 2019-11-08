@@ -24,7 +24,7 @@ self.addEventListener("install", function (event) {
 
 // If any fetch fails, it will show the offline page.
 self.addEventListener("fetch", function (event) {
-  
+  console.log("fetch);
   const requestURL = new URL(event.request.url);
   // Handle article URLs
   console.log(requestURL);
