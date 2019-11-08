@@ -24,6 +24,16 @@ self.addEventListener("install", function (event) {
 
 // If any fetch fails, it will show the offline page.
 self.addEventListener("fetch", function (event) {
+  
+  const requestURL = new URL(event.request.url);
+  // Handle article URLs
+  if (/^\/streamguys\//.test(requestURL.pathname)) {
+    event.respondWith(/* some response strategy */);
+    return;
+    // streamguys streamtheworld
+  }
+  
+  
   if (event.request.method !== "GET") return;
 
   event.respondWith(
