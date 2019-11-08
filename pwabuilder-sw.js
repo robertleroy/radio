@@ -27,7 +27,7 @@ self.addEventListener("fetch", function (event) {
   
   const requestURL = new URL(event.request.url);
   // Handle article URLs
-  if (/^\/streamguys\//.test(requestURL.pathname)) {
+  if (/\/streamguys\//.test(requestURL.pathname)) {
     event.respondWith(/* some response strategy */);
     return;
     // streamguys streamtheworld
