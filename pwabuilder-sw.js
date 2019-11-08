@@ -33,15 +33,9 @@ self.addEventListener("fetch", function (event) {
       console.log('audio');
       return;
     }
-      
-  // Handle article URLs
-  console.log(requestURL);
-  if (/streamguys/.test(requestURL.pathname)) {
-    console.log('streamguys');
-    // event.respondWith(/* some response strategy */);
-   //  return;
-    // streamguys streamtheworld
   }
+      
+
   
   
   if (event.request.method !== "GET") return;
