@@ -24,7 +24,7 @@ self.addEventListener("install", function (event) {
 
 // If any fetch fails, it will show the offline page.
 self.addEventListener("fetch", function (event) {
-  console.log("fetch");
+  
   // const destination = event.request.destination;  
   // switch (destination) {
   //   case 'audio': {
@@ -43,8 +43,7 @@ self.addEventListener("fetch", function (event) {
   
   
   if (event.request.method !== "GET") return;
-  console.log('!GET');
-
+  
   event.respondWith(
     fetch(event.request).catch(function (error) {
       // The following validates that the request was for a navigation to a new document
