@@ -37,10 +37,10 @@ self.addEventListener('activate', function(event) {
 // If any fetch fails, it will show the c
 self.addEventListener("fetch", function (event) {
 
-//   if (event.request.destination === "audio") {
-//     console.log('audio');
-//     return;
-//   };  
+  if (event.request.destination === "audio") {
+    console.log('audio');
+    return;
+  };  
   
   if (event.request.method !== "GET") return;
   
