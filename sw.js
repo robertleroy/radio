@@ -15,6 +15,23 @@ self.addEventListener("install", function (event) {
   );
 });
 
+
+self.addEventListener('activate', function(event) {
+  // Deletes all caches not included in whitelist - 
+  // ie, change in version number etc.
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
 // If any fetch fails, it will show the c
 self.addEventListener("fetch", function (event) {
 
