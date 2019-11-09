@@ -11,7 +11,7 @@ self.addEventListener('install', (event) => {
       return cache.addAll([
         cacheWhitelist
       ]);
-      console.log("Installed cache: ", Current_Cache.toString);
+      console.log("Installed cache: ", Current_Cache);
     })
   );
 });
