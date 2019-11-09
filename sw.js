@@ -17,6 +17,7 @@ self.addEventListener("install", function (event) {
 });
 
 self.addEventListener('activate', function(event) {
+  console.log("activate: ");
   // Deletes all caches not included in whitelist - 
   // ie, change in version number etc.
   event.waitUntil(
