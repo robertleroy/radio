@@ -7,16 +7,14 @@ const cacheWhitelist = [CACHE];
 // Install stage: set up and open a new cache
 self.addEventListener("install", function (event) {
   console.log("Install Event ...");
-var cacheWhitelist = [CACHE];
 
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
       return cache.add(offlinePage);
-      console.log("Cache installed");
+      console.log("Installed cache: ", CACHE);
     })
   );
 });
-
 
 self.addEventListener('activate', function(event) {
   // Deletes all caches not included in whitelist - 
@@ -26,8 +24,8 @@ self.addEventListener('activate', function(event) {
       return Promise.all(
         cacheNames.map(function(cacheName) {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            console.log("Deleteing cache: ", cacheName);
             return caches.delete(cacheName);
+            console.log("Deleted cache: ", cacheName);
           }
         })
       );
