@@ -45,7 +45,7 @@
         <div class="listItem" :key="index"
           v-for="(item,index) of currentList"
           @click="loadAudio(index)"
-          :class="{ selectedItem: index === selectedIndex }">
+          :class="{ selectedItem: item === selectedItem }">
           <div class="title">
             {{item.title}}
           </div>
