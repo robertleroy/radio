@@ -1,6 +1,6 @@
 // Radio service worker
 
-const CACHE = "radio-cache-v2";
+const CACHE = "radio-cache-v0.1";
 const offlinePage = "offline.html";
 const cacheWhitelist = [CACHE];
 
