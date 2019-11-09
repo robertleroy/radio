@@ -54,6 +54,10 @@
 			"sizes": "192x192"
 		},
 		{
+			"src": "./images/icon-300.png",
+			"sizes": "300x300"
+		},
+		{
 			"src": "./images/icon-384.png",
 			"sizes": "384x384"
 		},
