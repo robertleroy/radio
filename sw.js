@@ -34,6 +34,7 @@ self.addEventListener('activate', function(event) {
   );
 });
 
+
 // If any fetch fails, it will show the c
 self.addEventListener("fetch", function (event) {
 
@@ -62,6 +63,7 @@ self.addEventListener("fetch", function (event) {
     })
   );
 });
+
 
 // This is an event that can be fired from your page to tell the SW to update the offline page
 self.addEventListener("refreshOffline", function () {
