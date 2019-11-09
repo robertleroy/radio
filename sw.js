@@ -1,11 +1,13 @@
 // Radio service worker
 
-const CACHE = "radio-cache";
+const CACHE = "radio-cache-v1";
 const offlinePage = "offline.html";
+const cacheWhitelist = [CACHE];
 
 // Install stage: set up and open a new cache
 self.addEventListener("install", function (event) {
   console.log("Install Event ...");
+var cacheWhitelist = [CACHE];
 
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
