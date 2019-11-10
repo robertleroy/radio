@@ -1,6 +1,6 @@
 // Radio service worker
 
-const Current_Cache = "radio-cache-v0.2";
+const Current_Cache = "radio-cache-v0.3";
 const offlinePage = "offline.html";
 const cacheWhitelist = [Current_Cache];
 
@@ -8,8 +8,8 @@ self.addEventListener('install', (event) => {
   console.log("Install Event :: ");
   event.waitUntil(
     caches.open(Current_Cache).then((cache) => {
+      console.log("...installed cache: ", Current_Cache);
       return cache.add(offlinePage);
-      console.log("Installed cache: ", Current_Cache);
     })
   );
 });
@@ -21,8 +21,8 @@ self.addEventListener('activate', function(event) {
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
           if (cacheWhitelist.indexOf(key) === -1) {
+            console.log("...deleteing cache: ", key);
             return caches.delete(key);
-            console.log("Deleted cache: ", key);
           }
         })
       );
