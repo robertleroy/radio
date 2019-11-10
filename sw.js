@@ -8,9 +8,7 @@ self.addEventListener('install', (event) => {
   console.log("Install Event :: ");
   event.waitUntil(
     caches.open(Current_Cache).then((cache) => {
-      return cache.addAll([
-        cacheWhitelist
-      ]);
+      return cache.add(offlinePage);
       console.log("Installed cache: ", Current_Cache);
     })
   );
