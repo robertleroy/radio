@@ -1,28 +1,30 @@
-// Radio service worker
 
-const Current_Cache = "radio-cache-v0.3";
+const CACHE = "radio-cache-v0.1";
 const offlinePage = "offline.html";
-const cacheWhitelist = [Current_Cache];
+// const cacheWhitelist = [CACHE];
 
-self.addEventListener('install', (event) => {
-  console.log("Install Event :: ");
+// Install stage: set up and open a new cache
+self.addEventListener("install", function (event) {
+  console.log("Install Event ...");
+
   event.waitUntil(
-    caches.open(Current_Cache).then((cache) => {
-      console.log("...installed cache: ", Current_Cache);
+    caches.open(CACHE).then(function (cache) {
+      console.log("Installed cache: ", CACHE);
       return cache.add(offlinePage);
     })
   );
 });
 
 self.addEventListener('activate', function(event) {
-  console.log("Activate Event :: ");
-
+  // Deletes all caches not included in whitelist - 
+  // ie, change in version number etc.
   event.waitUntil(
-    caches.keys().then(function(keyList) {
-      return Promise.all(keyList.map(function(key) {
-          if (cacheWhitelist.indexOf(key) === -1) {
-            console.log("...deleteing cache: ", key);
-            return caches.delete(key);
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (CACHE !== cacheName) {
+            console.log("Deleted cache: ", cacheName);
+            return caches.delete(cacheName);
           }
         })
       );
@@ -31,10 +33,8 @@ self.addEventListener('activate', function(event) {
 });
 
 
-
-// If any fetch fails, it will show the c
+// If any fetch fails, 
 self.addEventListener("fetch", function (event) {
-  console.log("Fetch Event :: ");
 
   if (event.request.destination === "audio") {
     console.log('audio intercept...');
@@ -53,24 +53,23 @@ self.addEventListener("fetch", function (event) {
         return;
       }
       
-      console.error("Network request Failed. Serving offline page " + error);
+      console.error("service worker: offline " + error);
       // load offline page
-      return caches.open(Current_Cache).then(function (cache) {
+      return caches.open(CACHE).then(function (cache) {
         return cache.match(offlinePage);
       });
     })
   );
 });
 
+
 // This is an event that can be fired from your page to tell the SW to update the offline page
 self.addEventListener("refreshOffline", function () {
-  console.log("RefreshOffline Event :: ");
-
   const offlinePageRequest = new Request(offlinePage);
 
   return fetch(offlinePage).then(function (response) {
-    return caches.open(Current_Cache).then(function (cache) {
-      console.log("Offline page updated from refreshOffline event: " + response.url);
+    return caches.open(CACHE).then(function (cache) {
+      console.log("service worker: refreshOffline event " + response.url);
       return cache.put(offlinePageRequest, response);
     });
   });
