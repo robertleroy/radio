@@ -1,7 +1,6 @@
 
 const CACHE = "radio-cache-v0.1";
 const offlinePage = "offline.html";
-// const cacheWhitelist = [CACHE];
 
 // Install stage: set up and open a new cache
 self.addEventListener("install", function (event) {
