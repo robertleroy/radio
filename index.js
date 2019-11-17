@@ -73,8 +73,8 @@ const store = new Vuex.Store({
         url: "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3"
       }
     ],
-    currentPanel: "Music",
-    volume: 0.5,
+    currentPanel: "Radio",
+    volume: 1.0,
     autoplay: true,
   },
   getters: { 
