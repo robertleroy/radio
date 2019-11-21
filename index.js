@@ -19,9 +19,41 @@ Vue.directive("swipe", {
 }); 
 
 
-const Version = "0.0.1";
+const storagePlugin = store => {
+  const store_key = "radio";
+  const Version = "0.1.2";
+
+  store.subscribe((mutation, state) => {
+
+    let obj = {
+      version: state.version,
+      volume: state.volume,
+      currentPanel: state.currentPanel,
+      autoplay: state.autoplay,
+    };
+    
+    localStorage.setItem(
+      store_key, JSON.stringify(obj)
+    );
+
+  })
+
+  let storage_obj = JSON.parse( 
+    localStorage.getItem(store_key)
+  );
+  
+  if ( storage_obj ) {   
+    if ( storage_obj.version === Version ) { 
+      Object.assign(store.state, storage_obj);      
+      // store.replaceState(storage_obj);
+    } else {      
+      store.commit("updateVersion", Version);  
+    }
+  }  
+}
   
 const store = new Vuex.Store({
+  plugins: [storagePlugin],
   state: { 
     version: '',
     songs: [
@@ -91,21 +123,9 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
-    initializeStore(state) {
-      if ( localStorage.getItem('store') ) {
-        let store = JSON.parse( 
-          localStorage.getItem('store') 
-        );
-
-        if ( store.version === Version ) {
-          this.replaceState(
-            Object.assign(state, store)
-          );
-        } else {
-          state.version = Version;
-        }
-      }      
-    },
+    updateVersion(state, payload) {
+      state.version = payload;
+    }, 
     setVolume ( state, payload ) {
       state.volume = payload;
     },
@@ -115,18 +135,10 @@ const store = new Vuex.Store({
     },
     updateCurrentPanel( state, payload ) {
       state.currentPanel = payload;
-    },
-
+    }
   },
-  actions: {
-      
-  }
+  actions: {}
 })
-
-
-
-//import { mapGetters, mapMutations, mapActions } from 'vuex'
-
 
 const app = new Vue({ 
   el: '#app',
@@ -146,7 +158,6 @@ const app = new Vue({
   },
  
   computed: { 
-
     currentList() {
       return this.$store.getters.currentList;
     },
@@ -165,7 +176,6 @@ const app = new Vue({
         this.$store.commit('setVolume', value);
       }
     },
-
     title() {
       return this.playing && this.selectedItem ?
         this.selectedItem.title :
@@ -376,22 +386,6 @@ const app = new Vue({
     volume: function (val) {
       this.updateVolume();
     }
-  },
-
-  beforeCreate() {
-    this.$store.commit('initializeStore');
-    this.$store.subscribe((mutation, state) => {
-
-      let store = {
-        version: state.version,
-        volume: state.volume,
-        currentPanel: state.currentPanel,
-        autoplay: state.autoplay,
-      };
-      localStorage.setItem(
-        'store', JSON.stringify(store)
-      );
-    });
   },
 
   mounted() {
