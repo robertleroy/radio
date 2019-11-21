@@ -1,11 +1,3 @@
-// index.js //
-// import "./style.scss";
-
-// import Vue from 'vue'
-// import Vuex from 'vuex'
-// import Hammer from 'hammerjs';
-
-// Vue.use(Vuex)
 
 Vue.directive("swipe", {    
   bind: function(el, binding) {
@@ -17,7 +9,6 @@ Vue.directive("swipe", {
     }
   }
 }); 
-
 
 const storagePlugin = store => {
   const store_key = "radio";
@@ -35,7 +26,6 @@ const storagePlugin = store => {
     localStorage.setItem(
       store_key, JSON.stringify(obj)
     );
-
   })
 
   let storage_obj = JSON.parse( 
@@ -364,8 +354,7 @@ const app = new Vue({
       this.audioObj.crossorigin = "anonymous";
       this.audioObj.type = "audio/mpeg"; 
 
-      this.setEndFx();
-      
+      this.setEndFx();      
     },
     
     spin() {      
