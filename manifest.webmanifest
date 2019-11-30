@@ -1,61 +1,17 @@
 {
-	"dir" : "ltr",
-	"lang" : "English",
 	"name" : "Vue Radio",
+	"short_name" : "Vue Radio",
+	"start_url" : "https://robertleroy.github.io/radio/",
 	"scope" : "/radio/",
 	"display" : "standalone",
-	"start_url" : "https://robertleroy.github.io/radio/",
-	"short_name" : "Vue Radio",
 	"theme_color" : "#000000",
 	"background_color": "#000000",
 	"description" : "Vuejs HTML5 Audio Test",
 	"orientation" : "any",
-	"related_applications" : [],
-	"prefer_related_applications" : false,
 	"icons" : [
-		{
-			"src": "./images/icon-24.png",
-			"sizes": "24x24"
-		},
-		{
-			"src": "./images/icon-48.png",
-			"sizes": "48x48"
-		},
-		{
-			"src": "./images/icon-50.png",
-			"sizes": "50x50"
-		},
-		{
-			"src": "./images/icon-72.png",
-			"sizes": "72x72"
-		},
-		{
-			"src": "./images/icon-96.png",
-			"sizes": "96x96"
-		},
-		{
-			"src": "./images/icon-120.png",
-			"sizes": "120x120"
-		},
-		{
-			"src": "./images/icon-128.png",
-			"sizes": "128x128"
-		},
-		{
-			"src": "./images/icon-144.png",
-			"sizes": "144x144"
-		},
-		{
-			"src": "./images/icon-180.png",
-			"sizes": "180x180"
-		},
 		{
 			"src": "./images/icon-192.png",
 			"sizes": "192x192"
-		},
-		{
-			"src": "./images/icon-300.png",
-			"sizes": "300x300"
 		},
 		{
 			"src": "./images/icon-384.png",
@@ -64,16 +20,6 @@
 		{
 			"src": "./images/icon-512.png",
 			"sizes": "512x512"
-		},
-		{
-			"src": "./images/icon-620.png",
-			"sizes": "620x300"
-		},
-		{
-			"src": "./images/icon-1240.png",
-			"sizes": "1240x600"
 		}
-  ],
-	"screenshots" : [],
-	"generated" : true
+  ]
 }
