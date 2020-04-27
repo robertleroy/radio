@@ -85,7 +85,8 @@ const store = new Vuex.Store({
         description: "NPR",
         url: "http://20603.live.streamtheworld.com:80/KGOUFM_64_SC"
       },
-      {
+      { // http://kqed.ice.lbdns-streamguys.com/kqedradio
+        // http://kqed.ice.lbdns-streamguys.com/kqedradio
         title: "KQED",
         description: "NPR",
         url: "http://kqed.ice.lbdns-streamguys.com/kqedradio"
