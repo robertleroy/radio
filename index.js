@@ -70,9 +70,10 @@ const store = new Vuex.Store({
     ],
     stations: [
       { // http://wrau.streamguys1.com/msnbc-free
+        // http://198.178.123.5:12386/home.pls?sid=1
         title: "MSNBC",
         description: "News & Politics",
-        url: "http://198.178.123.5:12386/home.pls?sid=1"
+        url: "http://wrau.streamguys1.com/msnbc-free"
       },
       {
         title: "CNN",
