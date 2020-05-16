@@ -24,7 +24,7 @@
 
 <div id="app">
 
-  <header>
+  <header v-cloak>
     <transition name="fade" mode="out-in">
       <h4 :key="title" @click="randomToggle">
         {{title}}
@@ -37,7 +37,7 @@
     </div>
   </header>      
 
-  <main> 
+  <main v-cloak> 
     <transition :name="slide" mode="out-in">
       <div class="list" :key="currentPanel">
         <div class="listItem" :key="index"
@@ -63,7 +63,7 @@
     </div>
   </main>
 
-  <footer>
+  <footer v-cloak>
     <div class="buttons">
       
       <transition name="fade" mode="out-in">
