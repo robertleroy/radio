@@ -1,5 +1,5 @@
 
-const CACHE = "radio-cache-v0.1.4";
+const CACHE = "radio-cache-v0.1.5";
 const offlinePage = "offline.html";
 
 // Install stage: set up and open a new cache
