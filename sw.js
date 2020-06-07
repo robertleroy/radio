@@ -1,6 +1,7 @@
 
-const CACHE = "radio-cache-v0.1.5";
+const CACHE = "radio-cache-v0.1.6";
 const offlinePage = "offline.html";
+// v0.1.6 implements maskable icons //
 
 // Install stage: set up and open a new cache
 self.addEventListener("install", function (event) {
