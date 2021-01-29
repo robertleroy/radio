@@ -75,10 +75,10 @@ const store = new Vuex.Store({
         description: "News & Politics",
         url: "http://wrau.streamguys1.com/msnbc-free"
       },
-      {
+      { // https://tunein.streamguys1.com/cnn //
         title: "CNN",
         description: "News & Politics",
-        url: "http://tunein.streamguys1.com/cnn"
+        url: "http://tunein.streamguys1.com/cnn-new"
       },
       {
         title: "KGOU",
