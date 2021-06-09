@@ -80,10 +80,10 @@ const store = new Vuex.Store({
         description: "News & Politics",
         url: "http://tunein.streamguys1.com/cnn-new"
       },
-      {
+      { // http://20603.live.streamtheworld.com:80/KGOUFM_64_SC //
         title: "KGOU",
         description: "NPR",
-        url: "http://20603.live.streamtheworld.com:80/KGOUFM_64_SC"
+        url: "https://playerservices.streamtheworld.com/api/livestream-redirect/KGOUFM_64.mp3"
       },
       { // http://kqed.ice.lbdns-streamguys.com/kqedradio
         // https://streams.kqed.org/kqedradio
