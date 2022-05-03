@@ -85,12 +85,22 @@ const store = new Vuex.Store({
         description: "NPR",
         url: "https://playerservices.streamtheworld.com/api/livestream-redirect/KGOUFM_64.mp3"
       },
+			{ 
+				title: "KOSU", 
+				description: "NPR", 
+				url: "https://24153.live.streamtheworld.com/KOSUFM_NEWS_SC" 
+			},
       { // http://kqed.ice.lbdns-streamguys.com/kqedradio
         // https://streams.kqed.org/kqedradio
         title: "KQED",
         description: "NPR",
         url: "https://streams.kqed.org/kqedradio"
-      },      
+      },  
+			{ 
+				title: "KOKC", description: 
+				"Local News", 
+				url: "https://13693.live.streamtheworld.com/KOKCAMAAC.aac" 
+			}, 
       {
         title: "C-SPAN",
         description: "C-Span",
