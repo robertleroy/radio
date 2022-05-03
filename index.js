@@ -95,13 +95,13 @@ const store = new Vuex.Store({
         title: "KQED",
         description: "NPR",
         url: "https://streams.kqed.org/kqedradio"
-      },  
+			},  
 			{ 
 				title: "KOKC", description: 
 				"Local News", 
 				url: "https://13693.live.streamtheworld.com/KOKCAMAAC.aac" 
 			}, 
-      {
+			{
         title: "C-SPAN",
         description: "C-Span",
         url: "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3"
