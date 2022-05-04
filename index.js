@@ -98,8 +98,13 @@ const store = new Vuex.Store({
       },
       {
       	title: "KOKC", description:
-      	"Local News",
+      	"Local Talk Radio",
       	url: "https://13693.live.streamtheworld.com/KOKCAMAAC.aac"
+      },
+      {
+      	title: "KRXO", description:
+      	"Local Classic Rock",
+      	url: "https://18393.live.streamtheworld.com/KRXOHD2.mp3"
       },
       {
         title: "C-SPAN",
