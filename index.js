@@ -70,7 +70,7 @@ const store = new Vuex.Store({
     ],
     stations: [
       { // http://wrau.streamguys1.com/msnbc-free
-	// https://tunein.streamguys1.com/msnbc-free
+	// http://tunein.streamguys1.com/msnbc-free
         // http://198.178.123.5:12386/home.pls?sid=1
         title: "MSNBC",
         description: "News & Politics",
