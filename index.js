@@ -76,10 +76,10 @@ const store = new Vuex.Store({
         description: "News & Politics",
         url: "https://tunein.streamguys1.com/msnbc-free"
       },
-      { // https://tunein.streamguys1.com/cnn //
+      { // https://tunein.streamguys1.com/cnn - http://tunein.streamguys1.com/cnn-new //
         title: "CNN",
         description: "News & Politics",
-        url: "http://tunein.streamguys1.com/cnn-new"
+        url: "https://tunein.streamguys1.com/CNNi"
       },
       { // http://20603.live.streamtheworld.com:80/KGOUFM_64_SC //
         title: "KGOU",
@@ -117,7 +117,7 @@ const store = new Vuex.Store({
     volume: 1.0,
     autoplay: true,
   },
-  getters: { 
+  getters: {  
     currentList( state ) {
       if ( state.currentPanel === "Radio" ) 
         return state.stations;
