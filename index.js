@@ -79,7 +79,7 @@ const store = new Vuex.Store({
       { // https://tunein.streamguys1.com/cnn - http://tunein.streamguys1.com/cnn-new //
         title: "CNN",
         description: "News & Politics",
-        url: "https://tunein.streamguys1.com/CNNi"
+        url: "https://tunein.streamguys1.com/fallback-cnnembed"
       },
       { // http://20603.live.streamtheworld.com:80/KGOUFM_64_SC //
         title: "KGOU",
