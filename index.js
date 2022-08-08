@@ -79,7 +79,7 @@ const store = new Vuex.Store({
       { // https://tunein.streamguys1.com/cnn - .../cnn-new - .../fallback-cnnembed   //
         title: "CNN",
         description: "News & Politics",
-        url: "https://t1.streamguys1.com/secure-cnn?key=7381e6bcd931c20c1765664b73dc14a64f26fb9160bb1bee2e8d2fa8afcc3ffb&amp;partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTY1OTc5Mjg5OCwiaXNzIjoidGlzcnYifQ.Z9nz9xbBcL4D0xuhUb_WQWlJs4sWWR8Lqlwz97J80KQ"
+        url: "https://tunein.streamguys1.com/fallback-cnnembed"
       },
       { // http://20603.live.streamtheworld.com:80/KGOUFM_64_SC //
         title: "KGOU",
