@@ -74,7 +74,7 @@ const store = new Vuex.Store({
         // http://198.178.123.5:12386/home.pls?sid=1
         title: "MSNBC",
         description: "News & Politics",
-        url: "https://tunein.streamguys1.com/msnbc-free"
+        url: "https://tunein.streamguys1.com/msnbc-tesla"
       },
       { // https://tunein.streamguys1.com/cnn - .../cnn-new - .../fallback-cnnembed   //
         title: "CNN",
