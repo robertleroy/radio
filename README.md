@@ -1,4 +1,4 @@
-## <a target="_blank" href="https://robertleroy.github.io/radio/"> Vue Radio </a>
+## <a target="_blank" rel="noreferrer" href="https://robertleroy.github.io/radio/"> Vue Radio </a>
 
 media experiments
 
