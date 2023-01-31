@@ -76,10 +76,30 @@ const store = new Vuex.Store({
         description: "News & Politics",
         url: "https://tunein.streamguys1.com/msnbc-tesla"
       },
+      { 
+        title: "MSNBC2",
+        description: "News & Politics",
+        url: "https://t1.streamguys1.com/msnbc-backup"
+      },
+//       { 
+//         title: "MSNBC3",
+//         description: "News & Politics",
+//         url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=8256c0d6b3afa3a45152ca72a3aff2d2d3554cf6ea7660a6f65c318d74957358"
+//       },
+//       { 
+//         title: "MSNBC4",
+//         description: "News & Politics",
+//         url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=09fad62f0f28fc47e93f995346611785794d4acf7cc3b4464b767e95bff7cb09"
+//       },
       { // https://tunein.streamguys1.com/cnn - .../cnn-new - .../fallback-cnnembed   //
         title: "CNN",
         description: "News & Politics",
         url: "https://tunein.streamguys1.com/fallback-cnnembed"
+      },
+      { 
+        title: "CNN2",
+        description: "News & Politics",
+        url: "https://t1.streamguys1.com/cnn-backup"
       },
       { // http://20603.live.streamtheworld.com:80/KGOUFM_64_SC //
         title: "KGOU",
