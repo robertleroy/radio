@@ -69,35 +69,29 @@ const store = new Vuex.Store({
       }
     ],
     stations: [
-      { // http://wrau.streamguys1.com/msnbc-free
+      	// http://wrau.streamguys1.com/msnbc-free
 	// http://tunein.streamguys1.com/msnbc-free
         // http://198.178.123.5:12386/home.pls?sid=1
-        title: "MSNBC",
-        description: "News & Politics",
-        url: "https://tunein.streamguys1.com/msnbc-tesla"
-      },
+	// https://tunein.streamguys1.com/msnbc-tesla	    
       { 
-        title: "MSNBC2",
+        title: "MSNBC",
         description: "News & Politics",
         url: "https://t1.streamguys1.com/msnbc-backup"
       },
 //       { 
-//         title: "MSNBC3",
+//         title: "MSNBC2",
 //         description: "News & Politics",
 //         url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=8256c0d6b3afa3a45152ca72a3aff2d2d3554cf6ea7660a6f65c318d74957358"
 //       },
 //       { 
-//         title: "MSNBC4",
+//         title: "MSNBC3",
 //         description: "News & Politics",
 //         url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=09fad62f0f28fc47e93f995346611785794d4acf7cc3b4464b767e95bff7cb09"
 //       },
-      { // https://tunein.streamguys1.com/cnn - .../cnn-new - .../fallback-cnnembed   //
-        title: "CNN",
-        description: "News & Politics",
-        url: "https://tunein.streamguys1.com/fallback-cnnembed"
-      },
+      	// https://tunein.streamguys1.com/cnn - .../cnn-new - .../fallback-cnnembed   
+        // https://tunein.streamguys1.com/fallback-cnnembed
       { 
-        title: "CNN2",
+        title: "CNN",
         description: "News & Politics",
         url: "https://t1.streamguys1.com/cnn-backup"
       },
