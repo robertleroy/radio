@@ -177,7 +177,7 @@ const app = new Vue({
     progress: 0,
     duration: null,
     currentTime: null,
-    msg: '',
+    msg: '', // NEW CODE FOR DEBUG 
   },
  
   computed: { 
