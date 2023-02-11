@@ -406,6 +406,7 @@ const app = new Vue({
     errorMsg(str) {  
     // NEW METHOD FOR DEBUG
         msg = str;
+    },
   },  
   
   watch: {    
