@@ -177,6 +177,7 @@ const app = new Vue({
     progress: 0,
     duration: null,
     currentTime: null,
+    msg: '',
   },
  
   computed: { 
@@ -253,6 +254,7 @@ const app = new Vue({
     loadAudio(index) {
       // console.log(item);
       this.stop();
+      this.msg = '';
 
       this.selectedIndex = index;      
       this.selectedItem = this.currentList[this.selectedIndex];
@@ -401,6 +403,8 @@ const app = new Vue({
       this.title = "error ...";
       this.stop();
     },
+    errorMsg(str) {
+        msg = str;
   },  
   
   watch: {    
