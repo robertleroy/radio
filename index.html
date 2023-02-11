@@ -51,7 +51,9 @@
             {{item.description}}
           </div>
         </div>
-	      <p><code>an error occurred</code></p> <!--  NEW CODE FOR DEBUG    -->
+        
+        <!--  NEW CODE FOR DEBUG    -->
+	      <p><code>{{msg}}</code></p> 
 
       </div>
     </transition>
@@ -110,7 +112,7 @@
   <audio ref="audio"
 	 @abort="errorMsg('abort')"
 	 @error="errorMsg('error')"
-	 @stalled="errorMsg('stalled')" <!--  NEW CODE FOR DEBUG    -->
+	 @stalled="errorMsg('stalled')" 
 	 @suspend="errorMsg('suspend')"
 	 @ended="errorMsg('ended')"></audio>
 
