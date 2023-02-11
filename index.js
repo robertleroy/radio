@@ -403,7 +403,7 @@ const app = new Vue({
       this.title = "error ...";
       this.stop();
     },
-    errorMsg(str) {
+    errorMsg(str) {  // NEW METHOD FOR DEBUG
         msg = str;
   },  
   
