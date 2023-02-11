@@ -177,7 +177,7 @@ const app = new Vue({
     progress: 0,
     duration: null,
     currentTime: null,
-    msg: '', // NEW CODE FOR DEBUG 
+    msg: '', 
   },
  
   computed: { 
@@ -403,7 +403,8 @@ const app = new Vue({
       this.title = "error ...";
       this.stop();
     },
-    errorMsg(str) {  // NEW METHOD FOR DEBUG
+    errorMsg(str) {  
+    // NEW METHOD FOR DEBUG
         msg = str;
   },  
   
