@@ -51,6 +51,7 @@
             {{item.description}}
           </div>
         </div>
+	      <p><code>an error occurred</code></p>
       </div>
     </transition>
 
@@ -105,7 +106,12 @@
 
   </footer>
 
-  <audio ref="audio" @error="error($event)"></audio>
+  <audio ref="audio"
+	 @abort="errorMsg('abort')"
+	 @error="errorMsg('error')"
+	 @stalled="errorMsg('stalled')"
+	 @suspend="errorMsg('suspend')"
+	 @ended="errorMsg('ended')"></audio>
 
 </div> <!-- app -->
 
