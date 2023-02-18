@@ -88,7 +88,7 @@ const store = new Vuex.Store({
       {
         title: "CNN",
         description: "News & Politics",
-        url: "http://tunein.iad.streamguys1.com/secure-cnnembed",
+        url: "https://tunein.iad.streamguys1.com/secure-cnnembed",
       },
       {
         // http://20603.live.streamtheworld.com:80/KGOUFM_64_SC //
