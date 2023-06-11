@@ -252,6 +252,7 @@ const app = new Vue({
       this.selectedItem = this.currentList[this.selectedIndex];
 
       this.audioObj.src = this.selectedItem.url;
+      console.log(this.selectedItem.url);
       this.updateVolume();
 
       this.togglePlay();
