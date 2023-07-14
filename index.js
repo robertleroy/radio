@@ -70,11 +70,12 @@ const store = new Vuex.Store({
       http://tunein.streamguys1.com/msnbc-free
       http://198.178.123.5:12386/home.pls?sid=1
       https://tunein.streamguys1.com/msnbc-tesla
+      https://t1.streamguys1.com/msnbc-backup
       */
       {
         title: "MSNBC",
         description: "News & Politics",
-        url: "https://t1.streamguys1.com/msnbc-backup",
+        url: "https://tunein.streamguys1.com/msnbc-tesla",
       },
       /* 
       url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=8256c0d6b3afa3a45152ca72a3aff2d2d3554cf6ea7660a6f65c318d74957358"
