@@ -66,11 +66,12 @@ const store = new Vuex.Store({
     ],
     stations: [
       /* 
-      http://wrau.streamguys1.com/msnbc-free
-      http://tunein.streamguys1.com/msnbc-free
-      http://198.178.123.5:12386/home.pls?sid=1
-      https://tunein.streamguys1.com/msnbc-tesla
-      https://t1.streamguys1.com/msnbc-backup
+        http://wrau.streamguys1.com/msnbc-free
+        http://tunein.streamguys1.com/msnbc-free
+        http://198.178.123.5:12386/home.pls?sid=1
+        https://t1.streamguys1.com/msnbc-backup
+        https://tunein.streamguys1.com/msnbc-tesla
+        http://peridot.streamguys.com:7850/live
       */
       {
         title: "MSNBC",
@@ -82,10 +83,9 @@ const store = new Vuex.Store({
       url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=09fad62f0f28fc47e93f995346611785794d4acf7cc3b4464b767e95bff7cb09"
       */
       /* CNN
-      https://tunein.streamguys1.com/cnn-new  
-      https://tunein.streamguys1.com/fallback-cnnembed
-          https://t1.streamguys1.com/cnn-backup 
-          http://peridot.streamguys.com:7850/live
+        https://tunein.streamguys1.com/cnn-new  
+        https://tunein.streamguys1.com/fallback-cnnembed
+        https://t1.streamguys1.com/cnn-backup 
       */
       {
         title: "CNN",
