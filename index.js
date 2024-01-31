@@ -71,12 +71,13 @@ const store = new Vuex.Store({
         http://198.178.123.5:12386/home.pls?sid=1
         https://t1.streamguys1.com/msnbc-backup
         https://tunein.streamguys1.com/msnbc-tesla
-        https://peridot.streamguys.com:7850/live
+        http://peridot.streamguys.com:7850/live
+        https://aa5dbe242ad94ceba164ecf25b68c84e.mediatailor.us-west-2.amazonaws.com/v1/manifest/30ead7055f8b8e1f2f04add745f139b184df6925/production/be960dda-bbbb-4a52-a21e-2140149562f3/0.m3u8
       */
       {
         title: "MSNBC",
         description: "News & Politics",
-        url: "https://peridot.streamguys.com:7850/live",
+        url: "https://aa5dbe242ad94ceba164ecf25b68c84e.mediatailor.us-west-2.amazonaws.com/v1/manifest/30ead7055f8b8e1f2f04add745f139b184df6925/production/be960dda-bbbb-4a52-a21e-2140149562f3/0.m3u8",
       },
       /* 
       url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=8256c0d6b3afa3a45152ca72a3aff2d2d3554cf6ea7660a6f65c318d74957358"
