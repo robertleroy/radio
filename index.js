@@ -77,7 +77,7 @@ const store = new Vuex.Store({
       {
         title: "MSNBC",
         description: "News & Politics",
-        url: "http://peridot.streamguys.com:7850/live-mp3",
+        url: "http://peridot.streamguys.com:7850/live",
       },
       /* 
       url: "https://t1.streamguys1.com/secure-msnbc-srt?1&key=8256c0d6b3afa3a45152ca72a3aff2d2d3554cf6ea7660a6f65c318d74957358"
