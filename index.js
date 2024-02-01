@@ -87,11 +87,24 @@ const store = new Vuex.Store({
         https://tunein.streamguys1.com/cnn-new  
         https://tunein.streamguys1.com/fallback-cnnembed
         https://t1.streamguys1.com/cnn-backup 
+https://tunein.cdnstream1.com/2868_96.mp3
+?aw_0_1st.playerid=SLb0WwgW
+&aw_0_1st.skey=1706794993
+&aw_0_1st.abtest=
+&partnerId=SLb0WwgW
+&aw_0_1st.stationId=s20407
+&aw_0_1st.premium=false
+&source=TuneIn
+&aw_0_1st.platform=tunein
+&aw_0_1st.genre_id=g3124
+&aw_0_1st.class=talk
+&aw_0_1st.ads_partner_alias=emb.CNN
+&aw_0_azn.planguage=en
       */
       {
         title: "CNN",
         description: "News & Politics",
-        url: "https://t1.streamguys1.com/cnn-backup",
+        url: "https://tunein.cdnstream1.com/2868_96.mp3",
       },
       {
         // http://20603.live.streamtheworld.com:80/KGOUFM_64_SC //
