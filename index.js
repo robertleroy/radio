@@ -137,6 +137,11 @@ https://tunein.cdnstream1.com/2868_96.mp3
         url: "https://18393.live.streamtheworld.com/KRXOHD2.mp3",
       },
       {
+        title: "WWLS",
+        description: "The Sports Animal",
+        url: "https://27033.live.streamtheworld.com/WWLSAMAAC_SC",
+      },
+      {
         title: "C-SPAN",
         description: "C-Span",
         url: "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3",
